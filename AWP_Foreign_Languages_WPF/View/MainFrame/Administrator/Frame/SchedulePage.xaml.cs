@@ -29,8 +29,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         {
             InitializeComponent();
 
-            lessons = db.context.Lesson.ToList();
-            DataGridSchedule.ItemsSource = lessons;
+            Update();
+
+            InitContextMenu();
+
 
             #region Поиск
 
@@ -81,6 +83,36 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             ComboBoxTeacherLessonEdit.SelectedValuePath = "IdTeacher";
 
             #endregion
+        }
+
+        private void InitContextMenu()
+        {
+            MenuItem menuItem = new MenuItem();
+            menuItem.Header = "Смотреть ДЗ";
+            menuItem.Click += ButtonHomeWorkView_Click;
+            ContextMenuDataGrid.Items.Add(menuItem);
+
+            menuItem = new MenuItem();
+            menuItem.Header = "Добавить ДЗ";
+            menuItem.Click += ButtonHomeWorkAdd_Click;
+            ContextMenuDataGrid.Items.Add(menuItem);
+
+            MenuItem menuItem1 = new MenuItem();
+            menuItem1.Header = "Удалить";
+            menuItem1.Name = "MenuItemDelete";
+            menuItem1.Click += ButtonHomeWorkView_Click;
+            ContextMenuDataGrid.Items.Add(menuItem1);
+
+            menuItem = new MenuItem();
+            menuItem.Header = "Подтвердить";
+            menuItem.Click += ButtonHomeWorkView_Click;
+            menuItem1.Items.Add(menuItem);
+        }
+
+        private void Update()
+        {
+            lessons = db.context.Lesson.ToList();
+            DataGridSchedule.ItemsSource = lessons;
         }
 
         #region Контекстное меню
@@ -197,24 +229,33 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         #region Добавление
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            int lesson = (int)ComboBoxLessonNameAdd.SelectedValue;
-            int service = (int)ComboBoxServiceNameAdd.SelectedValue;
-            DateTime date = (DateTime)DatePickerDateLessonAdd.SelectedDate;
-            TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonAdd.Text);
-            int teacher = (int)ComboBoxTeacherLessonAdd.SelectedValue;
-
-            Lesson newLesson = new Lesson
+            try
             {
-                LanguageIdLesson = lesson,
-                ServiceIdLesson = service,
-                DateLesson = date,
-                TimeLesson = time,
-                IdTeacherLesson = teacher,
-            };
+                int lesson = (int)ComboBoxLessonNameAdd.SelectedValue;
+                int service = (int)ComboBoxServiceNameAdd.SelectedValue;
+                DateTime date = (DateTime)DatePickerDateLessonAdd.SelectedDate;
+                TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonAdd.Text);
+                int teacher = (int)ComboBoxTeacherLessonAdd.SelectedValue;
 
-            db.context.Lesson.Add(newLesson);
-            db.context.SaveChanges();
-            ClearEdit();
+                Lesson newLesson = new Lesson
+                {
+                    LanguageIdLesson = lesson,
+                    ServiceIdLesson = service,
+                    DateLesson = date,
+                    TimeLesson = time,
+                    IdTeacherLesson = teacher,
+                };
+
+                db.context.Lesson.Add(newLesson);
+                db.context.SaveChanges();
+
+                Update();
+                ClearEdit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void ButtonClearAdd_Click(object sender, RoutedEventArgs e)
         {
