@@ -1,0 +1,1081 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище AWP_Foreign_LanguagesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="IdAttendance" />
+          </Key>
+          <Property Name="IdAttendance" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdLesson" Type="int" Nullable="false" />
+          <Property Name="BoolAttendance" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUserClient" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientGroup">
+          <Key>
+            <PropertyRef Name="IdClientGroup" />
+          </Key>
+          <Property Name="IdClientGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameGroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdLanguageGroup" Type="int" Nullable="false" />
+          <Property Name="IdServiceGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="IdLanguage" />
+          </Key>
+          <Property Name="IdLanguage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameLanguage" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="IdLesson" />
+          </Key>
+          <Property Name="IdLesson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageIdLesson" Type="int" />
+          <Property Name="ServiceIdLesson" Type="int" Nullable="false" />
+          <Property Name="DateLesson" Type="date" Nullable="false" />
+          <Property Name="TimeLesson" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IdTeacherLesson" Type="int" Nullable="false" />
+          <Property Name="HomeworkLesson" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LessonTeacher">
+          <Key>
+            <PropertyRef Name="IdLessonTeacher" />
+          </Key>
+          <Property Name="IdLessonTeacher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLesson" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="IdService" />
+          </Key>
+          <Property Name="IdService" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameService" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PriceService" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceTeacher">
+          <Key>
+            <PropertyRef Name="IdServiceTeacher" />
+          </Key>
+          <Property Name="IdServiceTeacher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdService" Type="int" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="IdTeacher" />
+          </Key>
+          <Property Name="IdTeacher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLanguageTeacher" Type="int" Nullable="false" />
+          <Property Name="IdUserTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherGroup">
+          <Key>
+            <PropertyRef Name="IdTeacherGroup" />
+          </Key>
+          <Property Name="IdTeacherGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PasswordUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRoleUser" Type="int" Nullable="false" />
+          <Property Name="LastNameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstNameUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatronicNameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneUser" Type="nvarchar" MaxLength="11" />
+          <Property Name="BirthdayUser" Type="date" />
+          <Property Name="SexUser" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AvatarUser" Type="image" />
+        </EntityType>
+        <Association Name="FK_Attendance_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Lesson">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="IdLesson" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdUserClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientGroup_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientGroup" Type="Self.ClientGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="ClientGroup">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientGroup_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="ClientGroup" Type="Self.ClientGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="ClientGroup">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdLanguageGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdServiceGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="IdTeacherLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonTeacher_Lesson">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+          <End Role="LessonTeacher" Type="Self.LessonTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="IdLesson" />
+            </Principal>
+            <Dependent Role="LessonTeacher">
+              <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonTeacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LessonTeacher" Type="Self.LessonTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="LessonTeacher">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTeacher_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ServiceTeacher" Type="Self.ServiceTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
+            </Principal>
+            <Dependent Role="ServiceTeacher">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTeacher_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="ServiceTeacher" Type="Self.ServiceTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="ServiceTeacher">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdLanguageTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdUserTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherGroup_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="TeacherGroup" Type="Self.TeacherGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="TeacherGroup">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherGroup_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="TeacherGroup" Type="Self.TeacherGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="TeacherGroup">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRoleUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AWP_Foreign_LanguagesModelContainer">
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientGroup" EntityType="Self.ClientGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LessonTeacher" EntityType="Self.LessonTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceTeacher" EntityType="Self.ServiceTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherGroup" EntityType="Self.TeacherGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Attendance_Client" Association="Self.FK_Attendance_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Lesson" Association="Self.FK_Attendance_Lesson">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientGroup_Client" Association="Self.FK_ClientGroup_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientGroup" EntitySet="ClientGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientGroup_Group" Association="Self.FK_ClientGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="ClientGroup" EntitySet="ClientGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Language" Association="Self.FK_Group_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Service" Association="Self.FK_Group_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Teacher" Association="Self.FK_Lesson_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonTeacher_Lesson" Association="Self.FK_LessonTeacher_Lesson">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="LessonTeacher" EntitySet="LessonTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonTeacher_User" Association="Self.FK_LessonTeacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LessonTeacher" EntitySet="LessonTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTeacher_Service" Association="Self.FK_ServiceTeacher_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiceTeacher" EntitySet="ServiceTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTeacher_Teacher" Association="Self.FK_ServiceTeacher_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="ServiceTeacher" EntitySet="ServiceTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Language" Association="Self.FK_Teacher_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="Self.FK_Teacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherGroup_Group" Association="Self.FK_TeacherGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="TeacherGroup" EntitySet="TeacherGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherGroup_Teacher" Association="Self.FK_TeacherGroup_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeacherGroup" EntitySet="TeacherGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AWP_Foreign_LanguagesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AWP_Foreign_LanguagesEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AWP_Foreign_LanguagesModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AWP_Foreign_LanguagesModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Attendance" EntityType="AWP_Foreign_LanguagesModel.Attendance" />
+          <EntitySet Name="Client" EntityType="AWP_Foreign_LanguagesModel.Client" />
+          <EntitySet Name="ClientGroup" EntityType="AWP_Foreign_LanguagesModel.ClientGroup" />
+          <EntitySet Name="Group" EntityType="AWP_Foreign_LanguagesModel.Group" />
+          <EntitySet Name="Language" EntityType="AWP_Foreign_LanguagesModel.Language" />
+          <EntitySet Name="Lesson" EntityType="AWP_Foreign_LanguagesModel.Lesson" />
+          <EntitySet Name="LessonTeacher" EntityType="AWP_Foreign_LanguagesModel.LessonTeacher" />
+          <EntitySet Name="Role" EntityType="AWP_Foreign_LanguagesModel.Role" />
+          <EntitySet Name="Service" EntityType="AWP_Foreign_LanguagesModel.Service" />
+          <EntitySet Name="ServiceTeacher" EntityType="AWP_Foreign_LanguagesModel.ServiceTeacher" />
+          <EntitySet Name="sysdiagrams" EntityType="AWP_Foreign_LanguagesModel.sysdiagrams" />
+          <EntitySet Name="Teacher" EntityType="AWP_Foreign_LanguagesModel.Teacher" />
+          <EntitySet Name="TeacherGroup" EntityType="AWP_Foreign_LanguagesModel.TeacherGroup" />
+          <EntitySet Name="User" EntityType="AWP_Foreign_LanguagesModel.User" />
+          <AssociationSet Name="FK_Attendance_Client" Association="AWP_Foreign_LanguagesModel.FK_Attendance_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Lesson" Association="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_User" Association="AWP_Foreign_LanguagesModel.FK_Client_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientGroup_Client" Association="AWP_Foreign_LanguagesModel.FK_ClientGroup_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientGroup" EntitySet="ClientGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientGroup_Group" Association="AWP_Foreign_LanguagesModel.FK_ClientGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="ClientGroup" EntitySet="ClientGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Language" Association="AWP_Foreign_LanguagesModel.FK_Group_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Service" Association="AWP_Foreign_LanguagesModel.FK_Group_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherGroup_Group" Association="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="TeacherGroup" EntitySet="TeacherGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Language" Association="AWP_Foreign_LanguagesModel.FK_Teacher_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Teacher" Association="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonTeacher_Lesson" Association="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="LessonTeacher" EntitySet="LessonTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonTeacher_User" Association="AWP_Foreign_LanguagesModel.FK_LessonTeacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LessonTeacher" EntitySet="LessonTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="AWP_Foreign_LanguagesModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTeacher_Service" Association="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiceTeacher" EntitySet="ServiceTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTeacher_Teacher" Association="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="ServiceTeacher" EntitySet="ServiceTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="AWP_Foreign_LanguagesModel.FK_Teacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherGroup_Teacher" Association="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeacherGroup" EntitySet="TeacherGroup" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="IdAttendance" />
+          </Key>
+          <Property Name="IdAttendance" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdLesson" Type="Int32" Nullable="false" />
+          <Property Name="BoolAttendance" Type="Byte" />
+          <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Client" FromRole="Attendance" ToRole="Client" />
+          <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" FromRole="Attendance" ToRole="Lesson" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUserClient" Type="Int32" />
+          <NavigationProperty Name="Attendance" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Client" FromRole="Client" ToRole="Attendance" />
+          <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_Client_User" FromRole="Client" ToRole="User" />
+          <NavigationProperty Name="ClientGroup" Relationship="AWP_Foreign_LanguagesModel.FK_ClientGroup_Client" FromRole="Client" ToRole="ClientGroup" />
+        </EntityType>
+        <EntityType Name="ClientGroup">
+          <Key>
+            <PropertyRef Name="IdClientGroup" />
+          </Key>
+          <Property Name="IdClientGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_ClientGroup_Client" FromRole="ClientGroup" ToRole="Client" />
+          <NavigationProperty Name="Group" Relationship="AWP_Foreign_LanguagesModel.FK_ClientGroup_Group" FromRole="ClientGroup" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameGroup" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdLanguageGroup" Type="Int32" Nullable="false" />
+          <Property Name="IdServiceGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientGroup" Relationship="AWP_Foreign_LanguagesModel.FK_ClientGroup_Group" FromRole="Group" ToRole="ClientGroup" />
+          <NavigationProperty Name="Language" Relationship="AWP_Foreign_LanguagesModel.FK_Group_Language" FromRole="Group" ToRole="Language" />
+          <NavigationProperty Name="Service" Relationship="AWP_Foreign_LanguagesModel.FK_Group_Service" FromRole="Group" ToRole="Service" />
+          <NavigationProperty Name="TeacherGroup" Relationship="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Group" FromRole="Group" ToRole="TeacherGroup" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="IdLanguage" />
+          </Key>
+          <Property Name="IdLanguage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameLanguage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Group" Relationship="AWP_Foreign_LanguagesModel.FK_Group_Language" FromRole="Language" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Teacher_Language" FromRole="Language" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="IdLesson" />
+          </Key>
+          <Property Name="IdLesson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageIdLesson" Type="Int32" />
+          <Property Name="ServiceIdLesson" Type="Int32" Nullable="false" />
+          <Property Name="DateLesson" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeLesson" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IdTeacherLesson" Type="Int32" Nullable="false" />
+          <Property Name="HomeworkLesson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Attendance" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" FromRole="Lesson" ToRole="Attendance" />
+          <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
+          <NavigationProperty Name="LessonTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson" FromRole="Lesson" ToRole="LessonTeacher" />
+        </EntityType>
+        <EntityType Name="LessonTeacher">
+          <Key>
+            <PropertyRef Name="IdLessonTeacher" />
+          </Key>
+          <Property Name="IdLessonTeacher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLesson" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson" FromRole="LessonTeacher" ToRole="Lesson" />
+          <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_User" FromRole="LessonTeacher" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="IdService" />
+          </Key>
+          <Property Name="IdService" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceService" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="AWP_Foreign_LanguagesModel.FK_Group_Service" FromRole="Service" ToRole="Group" />
+          <NavigationProperty Name="ServiceTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Service" FromRole="Service" ToRole="ServiceTeacher" />
+        </EntityType>
+        <EntityType Name="ServiceTeacher">
+          <Key>
+            <PropertyRef Name="IdServiceTeacher" />
+          </Key>
+          <Property Name="IdServiceTeacher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdService" Type="Int32" Nullable="false" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Service" FromRole="ServiceTeacher" ToRole="Service" />
+          <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Teacher" FromRole="ServiceTeacher" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="IdTeacher" />
+          </Key>
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLanguageTeacher" Type="Int32" Nullable="false" />
+          <Property Name="IdUserTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="AWP_Foreign_LanguagesModel.FK_Teacher_Language" FromRole="Teacher" ToRole="Language" />
+          <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher" FromRole="Teacher" ToRole="Lesson" />
+          <NavigationProperty Name="ServiceTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Teacher" FromRole="Teacher" ToRole="ServiceTeacher" />
+          <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
+          <NavigationProperty Name="TeacherGroup" Relationship="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Teacher" FromRole="Teacher" ToRole="TeacherGroup" />
+        </EntityType>
+        <EntityType Name="TeacherGroup">
+          <Key>
+            <PropertyRef Name="IdTeacherGroup" />
+          </Key>
+          <Property Name="IdTeacherGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Group" FromRole="TeacherGroup" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Teacher" FromRole="TeacherGroup" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PasswordUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRoleUser" Type="Int32" Nullable="false" />
+          <Property Name="LastNameUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstNameUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatronicNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneUser" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="BirthdayUser" Type="DateTime" Precision="0" />
+          <Property Name="SexUser" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AvatarUser" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Client_User" FromRole="User" ToRole="Client" />
+          <NavigationProperty Name="LessonTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_User" FromRole="User" ToRole="LessonTeacher" />
+          <NavigationProperty Name="Role" Relationship="AWP_Foreign_LanguagesModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_Attendance_Client">
+          <End Type="AWP_Foreign_LanguagesModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Lesson">
+          <End Type="AWP_Foreign_LanguagesModel.Lesson" Role="Lesson" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="IdLesson" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_User">
+          <End Type="AWP_Foreign_LanguagesModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="AWP_Foreign_LanguagesModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdUserClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientGroup_Client">
+          <End Type="AWP_Foreign_LanguagesModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.ClientGroup" Role="ClientGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="ClientGroup">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientGroup_Group">
+          <End Type="AWP_Foreign_LanguagesModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.ClientGroup" Role="ClientGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="ClientGroup">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Language">
+          <End Type="AWP_Foreign_LanguagesModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdLanguageGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Service">
+          <End Type="AWP_Foreign_LanguagesModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdServiceGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherGroup_Group">
+          <End Type="AWP_Foreign_LanguagesModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.TeacherGroup" Role="TeacherGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="TeacherGroup">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Language">
+          <End Type="AWP_Foreign_LanguagesModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdLanguageTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Teacher">
+          <End Type="AWP_Foreign_LanguagesModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Lesson" Role="Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="IdTeacherLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonTeacher_Lesson">
+          <End Type="AWP_Foreign_LanguagesModel.Lesson" Role="Lesson" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.LessonTeacher" Role="LessonTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="IdLesson" />
+            </Principal>
+            <Dependent Role="LessonTeacher">
+              <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonTeacher_User">
+          <End Type="AWP_Foreign_LanguagesModel.User" Role="User" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.LessonTeacher" Role="LessonTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="LessonTeacher">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="AWP_Foreign_LanguagesModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRoleUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTeacher_Service">
+          <End Type="AWP_Foreign_LanguagesModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.ServiceTeacher" Role="ServiceTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
+            </Principal>
+            <Dependent Role="ServiceTeacher">
+              <PropertyRef Name="IdService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTeacher_Teacher">
+          <End Type="AWP_Foreign_LanguagesModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.ServiceTeacher" Role="ServiceTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="ServiceTeacher">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Type="AWP_Foreign_LanguagesModel.User" Role="User" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdUserTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherGroup_Teacher">
+          <End Type="AWP_Foreign_LanguagesModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.TeacherGroup" Role="TeacherGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="TeacherGroup">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AWP_Foreign_LanguagesModelContainer" CdmEntityContainer="AWP_Foreign_LanguagesEntities">
+          <EntitySetMapping Name="Attendance">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="BoolAttendance" ColumnName="BoolAttendance" />
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdAttendance" ColumnName="IdAttendance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdUserClient" ColumnName="IdUserClient" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientGroup">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.ClientGroup">
+              <MappingFragment StoreEntitySet="ClientGroup">
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdClientGroup" ColumnName="IdClientGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="IdServiceGroup" ColumnName="IdServiceGroup" />
+                <ScalarProperty Name="IdLanguageGroup" ColumnName="IdLanguageGroup" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="NameLanguage" ColumnName="NameLanguage" />
+                <ScalarProperty Name="IdLanguage" ColumnName="IdLanguage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lesson">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="HomeworkLesson" ColumnName="HomeworkLesson" />
+                <ScalarProperty Name="IdTeacherLesson" ColumnName="IdTeacherLesson" />
+                <ScalarProperty Name="TimeLesson" ColumnName="TimeLesson" />
+                <ScalarProperty Name="DateLesson" ColumnName="DateLesson" />
+                <ScalarProperty Name="ServiceIdLesson" ColumnName="ServiceIdLesson" />
+                <ScalarProperty Name="LanguageIdLesson" ColumnName="LanguageIdLesson" />
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LessonTeacher">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.LessonTeacher">
+              <MappingFragment StoreEntitySet="LessonTeacher">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+                <ScalarProperty Name="IdLessonTeacher" ColumnName="IdLessonTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="PriceService" ColumnName="PriceService" />
+                <ScalarProperty Name="NameService" ColumnName="NameService" />
+                <ScalarProperty Name="IdService" ColumnName="IdService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTeacher">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.ServiceTeacher">
+              <MappingFragment StoreEntitySet="ServiceTeacher">
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="IdService" ColumnName="IdService" />
+                <ScalarProperty Name="IdServiceTeacher" ColumnName="IdServiceTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="IdUserTeacher" ColumnName="IdUserTeacher" />
+                <ScalarProperty Name="IdLanguageTeacher" ColumnName="IdLanguageTeacher" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherGroup">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.TeacherGroup">
+              <MappingFragment StoreEntitySet="TeacherGroup">
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="IdTeacherGroup" ColumnName="IdTeacherGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="AvatarUser" ColumnName="AvatarUser" />
+                <ScalarProperty Name="SexUser" ColumnName="SexUser" />
+                <ScalarProperty Name="BirthdayUser" ColumnName="BirthdayUser" />
+                <ScalarProperty Name="PhoneUser" ColumnName="PhoneUser" />
+                <ScalarProperty Name="EmailUser" ColumnName="EmailUser" />
+                <ScalarProperty Name="PatronicNameUser" ColumnName="PatronicNameUser" />
+                <ScalarProperty Name="FirstNameUser" ColumnName="FirstNameUser" />
+                <ScalarProperty Name="LastNameUser" ColumnName="LastNameUser" />
+                <ScalarProperty Name="IdRoleUser" ColumnName="IdRoleUser" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="AWP_Foreign_Languages_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AWP_Foreign_Languages_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="490" Width="800"
+        MinHeight="490" MinWidth="800"
+        MaxHeight="490" MaxWidth="800"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.ColumnSpan="2" Background="#5991FE">
+            
+        </StackPanel>
+
+        <StackPanel Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Margin="10 0" Width="auto" Click="Button_WelcomePageClick">Главная</Button>
+            <Button Margin="10 0" Width="auto" Click="Button_PersonalPageClick" Visibility="Collapsed" x:Name="ButtonPersonalPage">Личный кабинет</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border x:Name="LogInBorder" Style="{StaticResource RoundedBorderAuth}" Visibility="Visible" Background="#AEFFA0" CornerRadius="4,4,4,4" Width="161" Height="24">
+                <StackPanel Orientation="Horizontal">
+                    <Border Style="{StaticResource RoundedBorderAuth}" Background="#77F484" CornerRadius="4,4,4,4" Width="60">
+                        <Button x:Name="LoginButton" Click="LoginButton_Click">Войти</Button>
+                    </Border>
+                    <Button x:Name="RegistrationButton" Margin="3,0" Click="RegistrationButton_Click">Регистрация</Button>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource RoundedBorderAuth}" x:Name="LogoutBorder" Background="#AEFFA0" CornerRadius="4,4,4,4" Visibility="Collapsed" Height="24">
+                <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="5,1">Выйти</Button>
+            </Border>
+        </StackPanel>
+
+        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Row="1" Grid.ColumnSpan="2">
+            
+        </Frame>
+    </Grid>
+</Window>
