@@ -267,6 +267,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\script.sql" />
     <Resource Include="Assets\Images\Rectangle 12.png" />
     <Resource Include="Assets\Images\2.png" />
     <Content Include="Models\AWP_Foreign_Languages_Model.Context.tt">

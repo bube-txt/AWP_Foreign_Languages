@@ -198,6 +198,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             int lesson = (int)ComboBoxLessonNameAdd.SelectedValue;
+            int service = (int)ComboBoxServiceNameAdd.SelectedValue;
             DateTime date = (DateTime)DatePickerDateLessonAdd.SelectedDate;
             TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonAdd.Text);
             int teacher = (int)ComboBoxTeacherLessonAdd.SelectedValue;
@@ -205,10 +206,14 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             Lesson newLesson = new Lesson
             {
                 LanguageIdLesson = lesson,
-                ServiceIdLesson = lesson,
+                ServiceIdLesson = service,
+                DateLesson = date,
+                TimeLesson = time,
+                IdTeacherLesson = teacher,
             };
 
             db.context.Lesson.Add(newLesson);
+            db.context.SaveChanges();
             ClearEdit();
         }
         private void ButtonClearAdd_Click(object sender, RoutedEventArgs e)
@@ -218,6 +223,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         private void ClearEdit()
         {
             ComboBoxLessonNameAdd.SelectedIndex = -1;
+            ComboBoxServiceNameAdd.SelectedIndex = -1;
             DatePickerDateLessonAdd.SelectedDate = null;
             TextBoxTimeLessonAdd.Text = "";
             ComboBoxTeacherLessonAdd.SelectedIndex = -1;
