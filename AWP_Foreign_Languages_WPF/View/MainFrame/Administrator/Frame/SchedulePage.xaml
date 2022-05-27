@@ -26,6 +26,8 @@
                     <MenuItem Header="Смотреть ДЗ" x:Name="ButtonHomeWorkView" Click="ButtonHomeWorkView_Click"/>
                     <MenuItem Header="Добавить ДЗ" x:Name="ButtonHomeWorkAdd" Click="ButtonHomeWorkAdd_Click" />
                     <Separator/>
+                    <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click" />
+                    <Separator/>
                     <MenuItem Header="Удалить">
                         <MenuItem Header="Подтвердить" x:Name="ButtonRemove" Click="ButtonRemove_Click"/>
                     </MenuItem>
@@ -128,7 +130,7 @@
                             </StackPanel>
                         </StackPanel>
                         <DockPanel>
-                            <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <StackPanel Width="120" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                                 <Border BorderThickness="1" BorderBrush="#21B1C9" Background="#2BB1C9" CornerRadius="6">
                                     <Button Click="ButtonEdit_Click" Content="Редактировать"/>
                                 </Border>
