@@ -111,6 +111,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\MainFrame\Administrator\Frame\AdministratorPage.xaml.cs">
       <DependentUpon>AdministratorPage.xaml</DependentUpon>
     </Compile>

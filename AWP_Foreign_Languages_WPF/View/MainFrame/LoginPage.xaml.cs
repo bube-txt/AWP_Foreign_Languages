@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using AWP_Foreign_Languages_WPF.Assets.Enums;
+using AWP_Foreign_Languages_WPF.ViewModel;
 
 namespace AWP_Foreign_Languages_WPF.View.MainFrame
 {
@@ -34,12 +35,9 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
                 return;
             }
 
-            List<User> users = db.context.User.Where(x => x.PhoneUser == phone && x.PasswordUser == password).ToList();
-            int count = users.Count;
-            if (count > 0)
+            if (UserViewModel.UserLogin(phone, password))
             {
-                User user = users.FirstOrDefault();
-                App.ActiveUser = user;
+                User user = App.ActiveUser;
 
                 if (user.Role.NameRole == RolesEnum.Client)
                 {
