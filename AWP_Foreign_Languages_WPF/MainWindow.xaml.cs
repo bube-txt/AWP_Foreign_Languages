@@ -21,6 +21,16 @@ namespace AWP_Foreign_Languages_WPF
         {
             InitializeComponent();
 
+            string welcomeMessage = @"
+Данное приложение находится на стадии разработки, так что возможны баги, вылеты и иные проблемы.
+
+Обо всех найденых ошибках сообщайте по электронному адресу: Kat89826420232@gmail.com.
+
+Благодарим за пользование нашей программы!
+";
+
+            MessageBox.Show(welcomeMessage,"Добро пожаловать!");
+
             App.MF = MainFrame;
             App.PersonalPageButton = ButtonPersonalPage;
             App.LoginBorder = LogInBorder;
