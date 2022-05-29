@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using AWP_Foreign_Languages_WPF.Assets.Enums;
 
 namespace AWP_Foreign_Languages_WPF.View.MainFrame
 {
@@ -29,7 +30,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
 
             if (phone.Length != 11)
             {
-                MessageBox.Show("Неверно введён номер телефона");
+                MessageBox.Show(ExceptionsEnum.PhoneException);
                 return;
             }
 
@@ -40,36 +41,41 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
                 User user = users.FirstOrDefault();
                 App.ActiveUser = user;
 
-                if (user.Role.NameRole == "Клиент")
+                if (user.Role.NameRole == RolesEnum.Client)
                 {
                     NavigationService.Navigate(new StudentPage());
                     ShowPersonalPageButton();
                 }
-                else if (user.Role.NameRole == "Преподаватель")
+                else if (user.Role.NameRole == RolesEnum.Teacher)
                 {
                     NavigationService.Navigate(new TeacherPage());
                     ShowPersonalPageButton();
                 }
-                else if (user.Role.NameRole == "Администратор")
+                else if (user.Role.NameRole == RolesEnum.Administrator)
                 {
                     NavigationService.Navigate(new AdministratorPage());
                     ShowPersonalPageButton();
                 }
-                else if (user.Role.NameRole == "Тестовый режим")
+                else if (user.Role.NameRole == RolesEnum.TestMode)
                 {
                     // NavigationService.Navigate(new StudentPage());
                 }
                 else
                 {
-                    MessageBox.Show("Что-то не так с вашей ролью");
+                    MessageBox.Show(ExceptionsEnum.RoleException);
                 }
+            }
+            else
+            {
+                MessageBox.Show(ExceptionsEnum.AuthException);
             }
         }
         private void ShowPersonalPageButton()
         {
             App.PersonalPageButton.Visibility = Visibility.Visible;
-            App.LoginBorder.Visibility = Visibility.Collapsed;
+
             App.LogoutBorder.Visibility = Visibility.Visible;
+            App.LoginBorder.Visibility = Visibility.Collapsed;
         }
     }
 }

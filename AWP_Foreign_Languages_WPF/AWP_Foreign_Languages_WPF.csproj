@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assets\Enums\ExceptionsEnum.cs" />
     <Compile Include="Assets\Enums\RolesEnum.cs" />
     <Compile Include="Models\Attendance.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>

@@ -127,6 +127,9 @@ namespace AWP_Foreign_Languages_WPF
         private void HidePersonalPageButton()
         {
             ButtonPersonalPage.Visibility = Visibility.Collapsed;
+
+            App.LogoutBorder.Visibility = Visibility.Collapsed;
+            App.LoginBorder.Visibility = Visibility.Visible;
         }
     }
 }

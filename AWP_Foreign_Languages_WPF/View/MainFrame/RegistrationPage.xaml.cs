@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Drawing;
 using System;
 using System.Data.Entity.Validation;
+using AWP_Foreign_Languages_WPF.Assets.Enums;
 
 namespace AWP_Foreign_Languages_WPF.View.MainFrame
 {
@@ -53,27 +54,33 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
         {
             if (TextBoxFullName.Text.Trim().Split(' ').Length != 3)
             {
-              return;
+                MessageBox.Show(ExceptionsEnum.FullNameException);
+                return;
             }
             if (!Regex.IsMatch(TextBoxEmail.Text, @".{1,}@.{1,}\..{1,}"))
             {
+                MessageBox.Show(ExceptionsEnum.EmailException);
                 return;
             }
             if (!Regex.IsMatch(TextBoxPhone.Text, @"(\+[0-9]{11}|[0-9]{11})"))
             {
+                MessageBox.Show(ExceptionsEnum.PhoneException);
                 return;
             }
 
             if (DatePickerDateBirthday.SelectedDate == null && DatePickerDateBirthday.SelectedDate.ToString() == "" && DatePickerDateBirthday.SelectedDate.ToString() == "0001.01.01")
             {
+                MessageBox.Show(ExceptionsEnum.DateBirthdayException);
                 return;
             }
             if (TextBoxPassword.Text.Trim() == "")
             {
+                MessageBox.Show(ExceptionsEnum.PasswordException);
                 return;
             }
             if (ComboBoxGender.SelectedIndex == -1)
             {
+                MessageBox.Show(ExceptionsEnum.GenderException);
                 return;
             }
 

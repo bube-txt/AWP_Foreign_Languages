@@ -59,11 +59,19 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         {
             if (App.ActiveUser.Role.NameRole == RolesEnum.Client)
             {
-                App.MF.Content = new SchedulePage(); // UNDONE: Когда будет пользователь доработан - переделать!
+                App.MF.Content = new StudentsPage(); // UNDONE: Когда учащийся будет доработан - переделать!
+            }
+            else if (App.ActiveUser.Role.NameRole == RolesEnum.Teacher)
+            {
+                App.MF.Content = new TeachersPage(); // UNDONE: Когда учитель будет доработан - переделать!
+            }
+            else if (App.ActiveUser.Role.NameRole == RolesEnum.Administrator)
+            {
+                App.MF.Content = new AdministratorPage();
             }
             else
             {
-                App.MF.Content = new SchedulePage();
+                MessageBox.Show(ExceptionsEnum.RoleException);
             }
         }
     }
