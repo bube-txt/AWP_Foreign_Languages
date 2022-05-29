@@ -29,7 +29,7 @@ namespace AWP_Foreign_Languages_WPF
 Благодарим за пользование нашей программы!
 ";
 
-            MessageBox.Show(welcomeMessage,"Добро пожаловать!");
+            MessageBox.Show(welcomeMessage,"Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
 
             App.MF = MainFrame;
             App.PersonalPageButton = ButtonPersonalPage;

@@ -11,7 +11,8 @@ namespace AWP_Foreign_Languages_Library.Classes
     {
         public static bool TimeCheck(string time)
         {
-            if (Regex.IsMatch(time, @"[0-9]{2}:[0-9]{2}"))
+            bool result = TimeSpan.TryParse(time, out TimeSpan timeSpan);
+            if (timeSpan < new TimeSpan(24, 0, 0) & timeSpan > new TimeSpan(0, 0, 0))
             {
                 return true;
             }
