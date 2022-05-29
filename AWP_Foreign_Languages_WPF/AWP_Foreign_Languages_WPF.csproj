@@ -8,6 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AWP_Foreign_Languages_WPF</RootNamespace>
     <AssemblyName>AWP_Foreign_Languages_WPF</AssemblyName>
+	<LangVersion>8.0</LangVersion>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -108,8 +109,11 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\Administrator\AdministratorPage.xaml.cs">
+    <Compile Include="View\MainFrame\Administrator\Frame\AdministratorPage.xaml.cs">
       <DependentUpon>AdministratorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\HomeworkPage.xaml.cs">
+      <DependentUpon>HomeworkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
@@ -155,7 +159,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\MainFrame\Administrator\AdministratorPage.xaml">
+    <Page Include="View\MainFrame\Administrator\Frame\AdministratorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\HomeworkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

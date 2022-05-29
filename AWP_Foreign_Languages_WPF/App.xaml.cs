@@ -26,5 +26,9 @@ namespace AWP_Foreign_Languages_WPF
         /// Активный пользователь
         /// </summary>
         public static User ActiveUser = null;
+        /// <summary>
+        /// Выбранное занятие
+        /// </summary>
+        public static Lesson SelectedLesson = null;
     }
 }

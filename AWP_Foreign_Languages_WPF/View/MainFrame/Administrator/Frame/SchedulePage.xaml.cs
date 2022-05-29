@@ -131,6 +131,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             if ((Lesson)DataGridSchedule.SelectedItem != null)
             {
                 lastSelected = (Lesson)DataGridSchedule.SelectedItem;
+                App.SelectedLesson = lastSelected;
             }
         }
         #endregion
