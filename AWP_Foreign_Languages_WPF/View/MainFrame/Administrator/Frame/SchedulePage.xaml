@@ -23,8 +23,7 @@
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Смотреть ДЗ" x:Name="ButtonHomeWorkView" Click="ButtonHomeWorkView_Click"/>
-                    <MenuItem Header="Добавить ДЗ" x:Name="ButtonHomeWorkAdd" Click="ButtonHomeWorkAdd_Click" />
+                    <MenuItem Header="Домашнее задание" x:Name="ButtonHomeWorkView" Click="ButtonHomeWorkView_Click"/>
                     <Separator/>
                     <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click" />
                     <Separator/>
@@ -60,7 +59,7 @@
                             <ComboBox x:Name="ComboBoxTeacherLesson" SelectionChanged="ComboBoxTeacherLesson_SelectionChanged"/>
                         </StackPanel>
                     </StackPanel>
-                        <StackPanel Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                             <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
                             <Button Click="ButtonClear_Click" Content="Очистить"/>
                         </Border>
@@ -93,13 +92,13 @@
                         </StackPanel>
                         <DockPanel>
                             <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                                <Border BorderThickness="1" BorderBrush="#9AE188" Background="#9AE189" CornerRadius="6">
-                                    <Button Click="ButtonAdd_Click" Content="Добавить"/>
+                                <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
+                                    <Button Click="ButtonClearAdd_Click" Content="Очистить"/>
                                 </Border>
                             </StackPanel>
                             <StackPanel Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                                <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
-                                    <Button Click="ButtonClearAdd_Click" Content="Очистить"/>
+                                <Border BorderThickness="1" BorderBrush="#9AE188" Background="#9AE189" CornerRadius="6">
+                                    <Button Click="ButtonAdd_Click" Content="Добавить"/>
                                 </Border>
                             </StackPanel>
                         </DockPanel>
@@ -130,14 +129,14 @@
                             </StackPanel>
                         </StackPanel>
                         <DockPanel>
-                            <StackPanel Width="120" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                                <Border BorderThickness="1" BorderBrush="#21B1C9" Background="#2BB1C9" CornerRadius="6">
-                                    <Button Click="ButtonEdit_Click" Content="Редактировать"/>
-                                </Border>
-                            </StackPanel>
-                            <StackPanel Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                                 <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
                                     <Button Click="ButtonClearEdit_Click" Content="Очистить"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                <Border BorderThickness="1" BorderBrush="#21B1C9" Background="#2BB1C9" CornerRadius="6">
+                                    <Button x:Name="ButtonEditConfirm" Click="ButtonEditConfirm_Click" Content="Редактировать"/>
                                 </Border>
                             </StackPanel>
                         </DockPanel>

@@ -29,7 +29,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
 
             if (phone.Length != 11)
             {
-                MessageBox.Show("Неверно введен номер телефона");
+                MessageBox.Show("Неверно введён номер телефона");
                 return;
             }
 

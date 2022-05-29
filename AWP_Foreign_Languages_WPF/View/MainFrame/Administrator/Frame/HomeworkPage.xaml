@@ -19,20 +19,22 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
-                <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="auto">
-                    <TextBlock x:Name="TextBlockLessonName"/>
+
+                <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="auto" Orientation="Vertical">
+                    <TextBlock TextAlignment="Center" x:Name="TextBlockLessonName"/>
+                    <TextBlock TextAlignment="Center" x:Name="TextBlockServiceName"/>
+                    <TextBlock TextAlignment="Center" x:Name="TextBlockTeacherName" Margin="0 10 0 0"/>
                 </StackPanel>
-                
+
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Width="100">
                     <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
-                        <Button Content="Назад"/>
+                        <Button x:Name="ButtonBack" Click="ButtonBack_Click" Content="Назад"/>
                     </Border>
                 </StackPanel>
 
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" Grid.Column="1">
                     <Border BorderThickness="1" BorderBrush="#99E175" Background="#88E16A" CornerRadius="6">
-                        <Button Content="Изменить" Click="ButtonEditConfirm_Click"/>
+                        <Button Content="Изменить" x:Name="ButtonEditConfirm" Click="ButtonEditConfirm_Click"/>
                     </Border>
                 </StackPanel>
                 

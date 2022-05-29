@@ -55,7 +55,7 @@
           <Property Name="DateLesson" Type="date" Nullable="false" />
           <Property Name="TimeLesson" Type="time" Precision="7" Nullable="false" />
           <Property Name="IdTeacherLesson" Type="int" Nullable="false" />
-          <Property Name="HomeworkLesson" Type="nvarchar" MaxLength="100" />
+          <Property Name="HomeworkLesson" Type="text" />
         </EntityType>
         <EntityType Name="LessonTeacher">
           <Key>
@@ -610,7 +610,7 @@
           <Property Name="DateLesson" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TimeLesson" Type="Time" Nullable="false" Precision="7" />
           <Property Name="IdTeacherLesson" Type="Int32" Nullable="false" />
-          <Property Name="HomeworkLesson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HomeworkLesson" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Attendance" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" FromRole="Lesson" ToRole="Attendance" />
           <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
           <NavigationProperty Name="LessonTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson" FromRole="Lesson" ToRole="LessonTeacher" />

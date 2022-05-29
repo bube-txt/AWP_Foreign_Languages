@@ -1,4 +1,5 @@
-﻿using AWP_Foreign_Languages_WPF.Models;
+﻿using AWP_Foreign_Languages_WPF.Assets.Enums;
+using AWP_Foreign_Languages_WPF.Models;
 using AWP_Foreign_Languages_WPF.View.MainFrame;
 using AWP_Foreign_Languages_WPF.View.MainFrame.Administrator;
 using AWP_Foreign_Languages_WPF.View.MainFrame.Students;
@@ -102,19 +103,19 @@ namespace AWP_Foreign_Languages_WPF
         private void Button_PersonalPageClick(object sender, RoutedEventArgs e)
         {
             User user = App.ActiveUser;
-            if (user.Role.NameRole == "Клиент")
+            if (user.Role.NameRole == RolesEnum.Client)
             {
                 App.MF.Navigate(new StudentPage());
             }
-            else if (user.Role.NameRole == "Преподаватель")
+            else if (user.Role.NameRole == RolesEnum.Teacher)
             {
                 App.MF.Navigate(new TeacherPage());
             }
-            else if (user.Role.NameRole == "Администратор")
+            else if (user.Role.NameRole == RolesEnum.Administrator)
             {
                 App.MF.Navigate(new AdministratorPage());
             }
-            else if (user.Role.NameRole == "Тестовый режим")
+            else if (user.Role.NameRole == RolesEnum.TestMode)
             {
                 // App.MF.Navigate(new StudentPage());
             }
@@ -125,7 +126,7 @@ namespace AWP_Foreign_Languages_WPF
         }
         private void HidePersonalPageButton()
         {
-            ButtonPersonalPage.Visibility = Visibility.Visible;
+            ButtonPersonalPage.Visibility = Visibility.Collapsed;
         }
     }
 }
