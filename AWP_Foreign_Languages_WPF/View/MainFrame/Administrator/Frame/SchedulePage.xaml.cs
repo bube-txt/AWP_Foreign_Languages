@@ -83,6 +83,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             #endregion
         }
 
+
         #region Контекстное меню
 
         /// <summary>
@@ -225,16 +226,35 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         }
         #endregion
 
-
+        #region Редактирование
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            int lesson = (int)ComboBoxLessonNameEdit.SelectedValue;
+            int service = (int)ComboBoxServiceNameEdit.SelectedValue;
+            DateTime date = (DateTime)DatePickerDateLessonEdit.SelectedDate;
+            TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonEdit.Text);
+            int teacher = (int)ComboBoxTeacherLessonEdit.SelectedValue;
 
+            Lesson selectedLesson = db.context.Lesson.Where(x => x.IdLesson == lastSelected.IdLesson).FirstOrDefault();
+
+            selectedLesson.LanguageIdLesson = lesson;
+            selectedLesson.ServiceIdLesson = service;
+            selectedLesson.DateLesson = date;
+            selectedLesson.TimeLesson = time;
+            selectedLesson.IdTeacherLesson = teacher;
+
+            db.context.SaveChanges();
         }
 
         private void ButtonClearEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            ComboBoxLessonNameEdit.SelectedIndex = -1;
+            DatePickerDateLessonEdit.SelectedDate = null;
+            TextBoxTimeLessonEdit.Text = "";
+            ComboBoxTeacherLessonEdit.SelectedIndex = -1;
         }
+
+        #endregion
     }
 }
