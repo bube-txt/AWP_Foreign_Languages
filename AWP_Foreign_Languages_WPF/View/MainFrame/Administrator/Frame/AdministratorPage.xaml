@@ -14,16 +14,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ListBox>
-            <ListBoxItem Selected="ListBoxItemSchedule_Selected">
+            <ListBoxItem Selected="ListBoxItemSchedule_Selected" Margin="0 2">
                 <TextBlock Text="Расписание"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemStudents_Selected">
+            <ListBoxItem Selected="ListBoxItemStudents_Selected" Margin="0 2">
                 <TextBlock Text="Ученики"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemTeachers_Selected">
+            <ListBoxItem Selected="ListBoxItemTeachers_Selected" Margin="0 2">
                 <TextBlock Text="Преподаватели" Foreground="#9D9D9D"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemServices_Selected">
+            <ListBoxItem Selected="ListBoxItemServices_Selected" Margin="0 2">
                 <TextBlock Text="Услуги"/>
             </ListBoxItem>
         </ListBox>

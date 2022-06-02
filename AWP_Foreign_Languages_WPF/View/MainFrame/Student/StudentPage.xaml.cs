@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AWP_Foreign_Languages_WPF.View.MainFrame.Student;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         public StudentPage()
         {
             InitializeComponent();
+        }
+
+        private void ListBoxItemAllLessons_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new WIP();
+        }
+
+        private void ListBoxItemMonthLessons_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new WIP();
+        }
+
+        private void ListBoxItemHomeworks_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new WIP();
         }
     }
 }

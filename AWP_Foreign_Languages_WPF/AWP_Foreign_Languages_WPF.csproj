@@ -168,8 +168,14 @@
     <Compile Include="View\MainFrame\Student\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Student\WIPPage.xaml.cs">
+      <DependentUpon>WIPPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Teacher\TeacherPage.xaml.cs">
       <DependentUpon>TeacherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Teacher\WIPPage.xaml.cs">
+      <DependentUpon>WIPPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -230,7 +236,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MainFrame\Student\WIPPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainFrame\Teacher\TeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Teacher\WIPPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

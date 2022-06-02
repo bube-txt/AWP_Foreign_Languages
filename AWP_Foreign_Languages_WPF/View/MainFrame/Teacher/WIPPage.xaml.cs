@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace AWP_Foreign_Languages_WPF.View.MainFrame.Teacher
 {
     /// <summary>
-    /// Логика взаимодействия для TeacherPage.xaml
+    /// Логика взаимодействия для WIP.xaml
     /// </summary>
-    public partial class TeacherPage : Page
+    public partial class WIP : Page
     {
-        public TeacherPage()
+        public WIP()
         {
             InitializeComponent();
-        }
-
-        private void ListBoxItemAttendance_Selected(object sender, RoutedEventArgs e)
-        {
-            PersonalFrame.Content = new WIP();
-        }
-
-        private void ListBoxItemHomeworks_Selected(object sender, RoutedEventArgs e)
-        {
-            PersonalFrame.Content = new WIP();
         }
     }
 }
