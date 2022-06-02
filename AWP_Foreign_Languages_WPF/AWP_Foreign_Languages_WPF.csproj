@@ -329,6 +329,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Images\logo.png" />
     <Content Include="Models\script1.sql" />
     <Resource Include="Assets\Images\Rectangle 12.png" />
     <Resource Include="Assets\Images\2.png" />
