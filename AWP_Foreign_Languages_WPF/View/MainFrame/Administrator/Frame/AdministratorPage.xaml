@@ -21,7 +21,10 @@
                 <TextBlock Text="Ученики"/>
             </ListBoxItem>
             <ListBoxItem Selected="ListBoxItemTeachers_Selected">
-                <TextBlock Text="Преподаватели"/>
+                <TextBlock Text="Преподаватели" Foreground="#9D9D9D"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemServices_Selected">
+                <TextBlock Text="Услуги"/>
             </ListBoxItem>
         </ListBox>
         <Frame x:Name="PersonalFrame" Grid.Column="1"/>

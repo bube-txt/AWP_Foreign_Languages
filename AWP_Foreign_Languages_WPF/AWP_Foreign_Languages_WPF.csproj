@@ -150,6 +150,9 @@
     <Compile Include="View\MainFrame\Administrator\Frame\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\ServicePage.xaml.cs">
+      <DependentUpon>ServicePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\StudentsPage.xaml.cs">
       <DependentUpon>StudentsPage.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\Administrator\Frame\SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\ServicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

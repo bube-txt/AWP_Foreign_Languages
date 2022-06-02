@@ -58,7 +58,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
                 db.context.Client.Remove(lastSelected);
                 db.context.SaveChanges();
 
-                DataGridSchedule.ItemsSource = db.context.Lesson.ToList();
+                DataGridSchedule.ItemsSource = db.context.Client.ToList();
             }
         }
 

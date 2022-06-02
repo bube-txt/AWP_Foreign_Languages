@@ -40,5 +40,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator
         {
             PersonalFrame.Content = new TeachersPage();
         }
+
+        private void ListBoxItemServices_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new ServicePage();
+        }
     }
 }
