@@ -24,7 +24,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
     {
         Core db = new Core();
         List<Lesson> lessons;
-        Lesson lastSelected;
+        Lesson lastSelected = null;
         public SchedulePage()
         {
             InitializeComponent();
@@ -180,6 +180,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxLessonName.SelectedIndex = -1;
+            ComboBoxServiceName.SelectedIndex = -1;
             DatePickerDateLesson.SelectedDate = null;
             TextBoxTimeLesson.Text = "";
             ComboBoxTeacherLesson.SelectedIndex = -1;
@@ -189,13 +190,19 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         #region Добавление
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckAdd())
+            {
+                return;
+            }
             int lesson = (int)ComboBoxLessonNameAdd.SelectedValue;
             int service = (int)ComboBoxServiceNameAdd.SelectedValue;
             DateTime date = (DateTime)DatePickerDateLessonAdd.SelectedDate;
             TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonAdd.Text);
             int teacher = (int)ComboBoxTeacherLessonAdd.SelectedValue;
 
-            Lesson newLesson = new Lesson
+            try
+            {
+                Lesson newLesson = new Lesson
             {
                 LanguageIdLesson = lesson,
                 ServiceIdLesson = service,
@@ -204,9 +211,11 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
                 IdTeacherLesson = teacher,
             };
 
-            try
-            {
                 db.context.Lesson.Add(newLesson);
+                db.context.SaveChanges();
+
+                lessons = db.context.Lesson.ToList();
+                DataGridSchedule.ItemsSource = lessons;
                 ClearAdd();
             }
             catch (Exception ex)
@@ -240,6 +249,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (lastSelected == null)
+            {
+                return;
+            }
             ComboBoxLessonNameEdit.SelectedValue = lastSelected.LanguageIdLesson;
             ComboBoxServiceNameEdit.SelectedValue = lastSelected.ServiceIdLesson;
             DatePickerDateLessonEdit.SelectedDate = lastSelected.DateLesson;
@@ -256,6 +269,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
 
         private void ButtonEditConfirm_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckEdit())
+            {
+                return;
+            }
             int lesson = (int)ComboBoxLessonNameEdit.SelectedValue;
             int service = (int)ComboBoxServiceNameEdit.SelectedValue;
             DateTime date = (DateTime)DatePickerDateLessonEdit.SelectedDate;
@@ -275,6 +292,54 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
 
             ClearEdit();
             db.context.SaveChanges();
+        }
+
+        private bool CheckEdit()
+        {
+            var lesson = ComboBoxLessonNameEdit.SelectedValue;
+            var service = ComboBoxServiceNameEdit.SelectedValue;
+            var date = DatePickerDateLessonEdit.SelectedDate;
+            var time = TextBoxTimeLessonEdit.Text;
+            var teacher = ComboBoxTeacherLessonEdit.SelectedValue;
+
+            if (
+                lesson == null ||
+                service == null ||
+                date == null ||
+                String.IsNullOrWhiteSpace(time) ||
+                teacher == null
+                )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool CheckAdd()
+        {
+            var lesson = ComboBoxLessonNameAdd.SelectedValue;
+            var service = ComboBoxServiceNameAdd.SelectedValue;
+            var date = DatePickerDateLessonAdd.SelectedDate;
+            var time = TextBoxTimeLessonAdd.Text;
+            var teacher = ComboBoxTeacherLessonAdd.SelectedValue;
+
+            if (
+                lesson == null ||
+                service == null ||
+                date == null ||
+                String.IsNullOrWhiteSpace(time) ||
+                teacher == null
+                )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

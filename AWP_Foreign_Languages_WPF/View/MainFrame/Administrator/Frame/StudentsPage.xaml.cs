@@ -1,6 +1,19 @@
-﻿using AWP_Foreign_Languages_WPF.Models;
+﻿using AWP_Foreign_Languages_Library.Classes;
+using AWP_Foreign_Languages_WPF.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
 {
@@ -9,27 +22,19 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
     /// </summary>
     public partial class StudentsPage : Page
     {
-        // TODO: Сделать страницу для учащихся
         Core db = new Core();
         List<Client> students;
-        Client lastSelected;
+        Client lastSelected = null;
         public StudentsPage()
         {
             InitializeComponent();
+
+            students = db.context.Client.ToList();
+            DataGridSchedule.ItemsSource = students;
         }
 
-/*
+
         #region Контекстное меню
-
-        /// <summary>
-        /// Добавить ДЗ
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonHomeWorkAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// Посмотреть ДЗ
@@ -38,7 +43,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         /// <param name="e"></param>
         private void ButtonHomeWorkView_Click(object sender, RoutedEventArgs e)
         {
-
+            App.MF.NavigationService.Navigate(new HomeworkPage());
         }
 
         /// <summary>
@@ -48,9 +53,9 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         /// <param name="e"></param>
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
-            if ((Lesson)DataGridSchedule.SelectedItem != null)
+            if ((Client)DataGridSchedule.SelectedItem != null)
             {
-                db.context.Lesson.Remove(lastSelected);
+                db.context.Client.Remove(lastSelected);
                 db.context.SaveChanges();
 
                 DataGridSchedule.ItemsSource = db.context.Lesson.ToList();
@@ -64,9 +69,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         /// <param name="e"></param>
         private void DataGridSchedule_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((Lesson)DataGridSchedule.SelectedItem != null)
+            if ((Client)DataGridSchedule.SelectedItem != null)
             {
-                lastSelected = (Lesson)DataGridSchedule.SelectedItem;
+                lastSelected = (Client)DataGridSchedule.SelectedItem;
+                App.SelectedClient = lastSelected;
             }
         }
         #endregion
@@ -74,27 +80,27 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         #region Поиск
         private void Search()
         {
-            students = db.context.Lesson.ToList();
+            students = db.context.Client.ToList();
 
-            if (ComboBoxLessonName.SelectedIndex != -1)
+            if (!String.IsNullOrWhiteSpace(TextBoxFullNameSearch.Text))
             {
-                students = students.Where(x => x.LanguageIdLesson == (int)ComboBoxLessonName.SelectedValue).ToList();
+                students = students.Where(x => x.FullName.ToLower().Trim().Contains(TextBoxFullNameSearch.Text.ToLower().Trim())).ToList();
             }
-            if (ComboBoxServiceName.SelectedIndex != -1)
+            if (!String.IsNullOrWhiteSpace(TextBoxEmailSearch.Text))
             {
-                students = students.Where(x => x.ServiceIdLesson == (int)ComboBoxServiceName.SelectedValue).ToList();
+                students = students.Where(x => x.User.EmailUser.ToLower().Trim().Contains(TextBoxEmailSearch.Text.ToLower().Trim())).ToList();
             }
-            if (DatePickerDateLesson.SelectedDate != null)
+            if (!String.IsNullOrWhiteSpace(TextBoxPhoneSearch.Text))
             {
-                students = students.Where(x => x.DateLesson == DatePickerDateLesson.SelectedDate).ToList();
+                students = students.Where(x => x.User.PhoneUser.ToLower().Trim().Contains(TextBoxPhoneSearch.Text.ToLower().Trim())).ToList();
             }
-            if (CheckClass.TimeCheck(TextBoxTimeLesson.Text))
+            if (DatePickerDOBSearch.SelectedDate != null)
             {
-                students = students.Where(x => x.TimeLesson == TimeSpan.Parse(TextBoxTimeLesson.Text)).ToList();
+                students = students.Where(x => x.User.BirthdayUser == DatePickerDOBSearch.SelectedDate).ToList();
             }
-            if (ComboBoxTeacherLesson.SelectedIndex != -1)
+            if (ComboBoxGender.SelectedIndex != -1)
             {
-                students = students.Where(x => x.Teacher.IdTeacher == (int)ComboBoxTeacherLesson.SelectedValue).ToList();
+                students = students.ToList();
             }
 
             DataGridSchedule.ItemsSource = students;
@@ -123,72 +129,147 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxLessonName.SelectedIndex = -1;
-            DatePickerDateLesson.SelectedDate = null;
-            TextBoxTimeLesson.Text = "";
-            ComboBoxTeacherLesson.SelectedIndex = -1;
-        }
-        #endregion
-
-        #region Добавление
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
-        {
-            int lesson = (int)ComboBoxLessonNameAdd.SelectedValue;
-            DateTime date = (DateTime)DatePickerDateLessonAdd.SelectedDate;
-            TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonAdd.Text);
-            int teacher = (int)ComboBoxTeacherLessonAdd.SelectedValue;
-
-            Lesson newLesson = new Lesson
-            {
-                LanguageIdLesson = lesson,
-                ServiceIdLesson = lesson,
-            };
-
-            db.context.Lesson.Add(newLesson);
-            ClearEdit();
-        }
-        private void ButtonClearAdd_Click(object sender, RoutedEventArgs e)
-        {
-            ClearEdit();
-        }
-        private void ClearEdit()
-        {
-            ComboBoxLessonNameAdd.SelectedIndex = -1;
-            DatePickerDateLessonAdd.SelectedDate = null;
-            TextBoxTimeLessonAdd.Text = "";
-            ComboBoxTeacherLessonAdd.SelectedIndex = -1;
+            TextBoxFullNameSearch.Text = "";
+            TextBoxEmailSearch.Text = "";
+            TextBoxPhoneSearch.Text = "";
+            DatePickerDOBSearch.SelectedDate = null;
+            ComboBoxGender.SelectedIndex = -1;
         }
         #endregion
 
         #region Редактирование
 
+        private void ClearEdit()
+        {
+            TextBoxFullNameEdit.Text = null;
+            TextBoxEmailEdit.Text = null;
+            TextBoxPhoneEdit.Text = null;
+            DatePickerDOBEdit.SelectedDate = null;
+            ComboBoxEditGender.SelectedIndex = -1;
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            int lesson = (int)ComboBoxLessonNameEdit.SelectedValue;
-            int service = (int)ComboBoxServiceNameEdit.SelectedValue;
-            DateTime date = (DateTime)DatePickerDateLessonEdit.SelectedDate;
-            TimeSpan time = TimeSpan.Parse(TextBoxTimeLessonEdit.Text);
-            int teacher = (int)ComboBoxTeacherLessonEdit.SelectedValue;
-
-            Lesson selectedLesson = db.context.Lesson.Where(x => x.IdLesson == lastSelected.IdLesson).FirstOrDefault();
-
-            selectedLesson.LanguageIdLesson = lesson;
-            selectedLesson.ServiceIdLesson = service;
-            selectedLesson.DateLesson = date;
-            selectedLesson.TimeLesson = time;
-            selectedLesson.IdTeacherLesson = teacher;
-
-            db.context.SaveChanges();
+            if (lastSelected == null)
+            {
+                return;
+            }
+            TextBoxFullNameEdit.Text = lastSelected.FullName;
+            TextBoxEmailEdit.Text = lastSelected.User.EmailUser;
+            TextBoxPhoneEdit.Text = lastSelected.User.PhoneUser;
+            DatePickerDOBEdit.SelectedDate = lastSelected.User.BirthdayUser;
+            int gender = -1;
+            if (lastSelected.User.SexUser == "M")
+            {
+                gender = 0;
+            }
+            else if (lastSelected.User.SexUser == "W")
+            {
+                gender = 1;
+            }
+            ComboBoxEditGender.SelectedIndex = gender;
         }
 
         private void ButtonClearEdit_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxLessonNameEdit.SelectedIndex = -1;
-            DatePickerDateLessonEdit.SelectedDate = null;
-            TextBoxTimeLessonEdit.Text = "";
-            ComboBoxTeacherLessonEdit.SelectedIndex = -1;
+            ClearEdit();
         }
 
-        #endregion*/
+        #endregion
+
+        private void ButtonEditConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckEdit())
+            {
+                return;
+            }
+            string[] fullName = TextBoxFullNameEdit.Text.Trim().Split(' ');
+            string email = TextBoxEmailEdit.Text.Trim();
+            string phone = TextBoxPhoneEdit.Text.Trim();
+            DateTime date = (DateTime)DatePickerDOBEdit.SelectedDate;
+            int sex = ComboBoxEditGender.SelectedIndex;
+
+            Client selectedLesson = db.context.Client.Where(x => x.IdClient == lastSelected.IdClient).FirstOrDefault();
+
+            selectedLesson.User.LastNameUser = fullName[0];
+            selectedLesson.User.FirstNameUser = fullName[1];
+            selectedLesson.User.PatronicNameUser = fullName[2];
+            selectedLesson.User.EmailUser = email;
+            selectedLesson.User.PhoneUser = phone;
+            selectedLesson.User.BirthdayUser = date;
+            string gender = "";
+            if (ComboBoxEditGender.SelectedIndex == 0)
+            {
+                gender = "M";
+            }
+            else if (ComboBoxEditGender.SelectedIndex == 1)
+            {
+                gender = "W";
+            }
+            selectedLesson.User.SexUser = gender;
+
+            students = db.context.Client.ToList();
+            DataGridSchedule.ItemsSource = students;
+
+            ClearEdit();
+            db.context.SaveChanges();
+        }
+
+        private bool CheckEdit()
+        {
+            var fullname = TextBoxFullNameEdit.Text;
+            var email = TextBoxEmailEdit.Text;
+            var phone = TextBoxPhoneEdit.Text;
+            var date = DatePickerDOBEdit.SelectedDate;
+            var gender = ComboBoxEditGender.SelectedValue;
+
+            if (
+                fullname == null ||
+                email == null ||
+                phone == null ||
+                date == null||
+                gender == null
+                )
+            {
+                return false;
+            }
+            else
+            {
+                if (fullname.Trim().Split(' ').Length != 3)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        private void ButtonDel_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void TextBoxTextBoxFullNameSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void TextBoxTextBoxEmailSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void TextBoxTextBoxPhoneSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void DatePickerDOBSearch_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void ComboBoxGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Search();
+        }
     }
 }

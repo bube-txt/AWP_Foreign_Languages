@@ -116,6 +116,7 @@
     <Compile Include="Models\LessonTeacher.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partials\ClientPartial.cs" />
     <Compile Include="Models\Partials\LessonPartial.cs" />
     <Compile Include="Models\Partials\UserPartial.cs" />
     <Compile Include="Models\Role.cs">

@@ -30,5 +30,6 @@ namespace AWP_Foreign_Languages_WPF
         /// Выбранное занятие
         /// </summary>
         public static Lesson SelectedLesson = null;
+        public static Client SelectedClient = null;
     }
 }
