@@ -51,18 +51,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>51A60051DBB111376390C1445FA7A1A6B6AC965C</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>AWP_Foreign_Languages_WPF_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -315,7 +303,6 @@
     <Resource Include="Assets\Fonts\MontserratAlternates-SemiBoldItalic.ttf" />
     <Resource Include="Assets\Fonts\MontserratAlternates-Thin.ttf" />
     <Resource Include="Assets\Fonts\MontserratAlternates-ThinItalic.ttf" />
-    <None Include="AWP_Foreign_Languages_WPF_TemporaryKey.pfx" />
     <None Include="Models\AWP_Foreign_Languages_Model.edmx.diagram">
       <DependentUpon>AWP_Foreign_Languages_Model.edmx</DependentUpon>
     </None>

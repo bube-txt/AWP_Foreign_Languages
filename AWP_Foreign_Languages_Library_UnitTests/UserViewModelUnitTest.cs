@@ -10,7 +10,7 @@ namespace AWP_Foreign_Languages_Library_UnitTests
     {
         Core db = new Core();
         /// <summary>
-        /// Проверка данных для авторизации
+        /// Проверка данных для авторизации 
         /// </summary>
         [TestMethod]
         public void UserLogin_TestMethod1_TrueReturned()
