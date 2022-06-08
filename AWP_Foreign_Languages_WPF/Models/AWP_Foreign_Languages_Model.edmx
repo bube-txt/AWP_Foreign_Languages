@@ -214,6 +214,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Lesson_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="ServiceIdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Lesson_Teacher">
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
@@ -377,6 +389,10 @@
             <End Role="Service" EntitySet="Service" />
             <End Role="Group" EntitySet="Group" />
           </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Service" Association="Self.FK_Lesson_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
           <AssociationSet Name="FK_Lesson_Teacher" Association="Self.FK_Lesson_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Lesson" EntitySet="Lesson" />
@@ -503,6 +519,10 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="Teacher" EntitySet="Teacher" />
           </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Service" Association="AWP_Foreign_LanguagesModel.FK_Lesson_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
           <AssociationSet Name="FK_Lesson_Teacher" Association="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Lesson" EntitySet="Lesson" />
@@ -612,6 +632,7 @@
           <Property Name="IdTeacherLesson" Type="Int32" Nullable="false" />
           <Property Name="HomeworkLesson" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Attendance" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" FromRole="Lesson" ToRole="Attendance" />
+          <NavigationProperty Name="Service" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Service" FromRole="Lesson" ToRole="Service" />
           <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
           <NavigationProperty Name="LessonTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson" FromRole="Lesson" ToRole="LessonTeacher" />
         </EntityType>
@@ -641,6 +662,7 @@
           <Property Name="NameService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PriceService" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Group" Relationship="AWP_Foreign_LanguagesModel.FK_Group_Service" FromRole="Service" ToRole="Group" />
+          <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Service" FromRole="Service" ToRole="Lesson" />
           <NavigationProperty Name="ServiceTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Service" FromRole="Service" ToRole="ServiceTeacher" />
         </EntityType>
         <EntityType Name="ServiceTeacher">
@@ -811,6 +833,18 @@
             </Principal>
             <Dependent Role="Teacher">
               <PropertyRef Name="IdLanguageTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Service">
+          <End Type="AWP_Foreign_LanguagesModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Lesson" Role="Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="IdService" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="ServiceIdLesson" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

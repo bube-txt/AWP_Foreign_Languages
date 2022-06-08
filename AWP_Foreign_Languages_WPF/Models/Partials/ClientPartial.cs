@@ -9,6 +9,7 @@ namespace AWP_Foreign_Languages_WPF.Models
 {
     public partial class Client
     {
+        Core db = new Core();
         public string FullName
         {
             get
@@ -38,6 +39,31 @@ namespace AWP_Foreign_Languages_WPF.Models
                 else
                 {
                     return "???";
+                }
+            }
+        }
+        public string GetGroupName
+        {
+            get
+            {
+                int count = db.context.ClientGroup.Where(x => x.IdClient == IdClient).ToList().Count;
+                if (count > 1)
+                {
+                    List<ClientGroup> list = db.context.ClientGroup.Where(x => x.IdClient == IdClient).ToList();
+                    string str = "";
+                    foreach (var item in list)
+                    {
+                        str += item.Group.NameGroup + ", ";
+                    }
+                    return str.Trim();
+                }
+                else if (count == 1)
+                {
+                    return db.context.ClientGroup.Where(x => x.IdClient == IdClient).FirstOrDefault().Group.NameGroup;
+                }
+                else
+                {
+                    return "";
                 }
             }
         }

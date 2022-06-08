@@ -20,6 +20,7 @@ namespace AWP_Foreign_Languages_WPF.ViewModel
             {
                 App.ActiveUser = db.context.User.Where(x => x.PhoneUser == phone & x.PasswordUser == password).FirstOrDefault();
                 User user = App.ActiveUser;
+                App.ActiveClient = db.context.Client.Where(x => x.User.IdUser == App.ActiveUser.IdUser).FirstOrDefault();
 
                 return true;
             }

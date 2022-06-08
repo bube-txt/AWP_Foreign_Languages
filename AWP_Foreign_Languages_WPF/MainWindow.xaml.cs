@@ -37,7 +37,8 @@ namespace AWP_Foreign_Languages_WPF
             App.LogoutBorder = LogoutBorder;
 
             // Тестовый режим
-            App.ActiveUser = db.context.User.Where(x => x.SexUser == "S").FirstOrDefault();
+            App.ActiveUser = db.context.User.Where(x => x.IdUser == 4).FirstOrDefault();
+            App.ActiveClient = db.context.Client.Where(x => x.User.IdUser == App.ActiveUser.IdUser).FirstOrDefault();
             LogInBorder.Visibility = Visibility.Collapsed;
             LogoutBorder.Visibility = Visibility.Visible;
             ButtonPersonalPage.Visibility = Visibility.Visible;

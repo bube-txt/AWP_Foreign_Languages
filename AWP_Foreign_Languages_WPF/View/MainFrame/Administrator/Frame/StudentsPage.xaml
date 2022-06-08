@@ -15,6 +15,7 @@
         <DataGrid x:Name="DataGridSchedule" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGridSchedule_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Width="1*" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Группа" Width="1*" Binding="{Binding GetGroupName}"/>
                 <DataGridTextColumn Header="Почта" Width="1*" Binding="{Binding Path=User.EmailUser}"/>
                 <DataGridTextColumn Header="Телефон" Width="0.5*" Binding="{Binding Path=User.PhoneUser}"/>
                 <DataGridTextColumn Header="Дата рождения" Width="0.5*" Binding="{Binding FormatedDOB}"/>

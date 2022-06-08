@@ -45,5 +45,26 @@ namespace AWP_Foreign_Languages_WPF.Models
                 return Client.FullName;
             }
         }
+        public string LessonName
+        {
+            get
+            {
+                return Lesson.LessonName;
+            }
+        }
+        public string LessonDate
+        {
+            get
+            {
+                return Lesson.FormatedLessonDate;
+            }
+        }
+        public string LessonTeacher
+        {
+            get
+            {
+                return Lesson.TeacherFullName;
+            }
+        }
     }
 }

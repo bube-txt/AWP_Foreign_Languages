@@ -14,17 +14,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ListBox>
-            <ListBoxItem Selected="ListBoxItemAllLessons_Selected" Margin="0 2" Foreground="#9D9D9D">
+            <ListBoxItem Selected="ListBoxItemAllLessons_Selected" Margin="0 2">
                 <TextBlock Text="Все посещения"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemMonthLessons_Selected" Margin="0 2" Foreground="#9D9D9D">
+            <ListBoxItem Selected="ListBoxItemMonthLessons_Selected" Margin="0 2">
                 <StackPanel>
                     <TextBlock Text="Занятия в"/>
                     <TextBlock Text="текущем месяце"/>
                 </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemHomeworks_Selected" Margin="0 2" Foreground="#9D9D9D">
-                <TextBlock Text="Домашние задания"/>
             </ListBoxItem>
         </ListBox>
         <Frame x:Name="PersonalFrame" Grid.Column="1"/>

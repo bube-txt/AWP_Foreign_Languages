@@ -64,22 +64,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-            if (App.ActiveUser.Role.NameRole == RolesEnum.Client)
-            {
-                App.MF.Content = new StudentsPage();
-            }
-            else if (App.ActiveUser.Role.NameRole == RolesEnum.Teacher)
-            {
-                App.MF.Content = new TeachersPage();
-            }
-            else if (App.ActiveUser.Role.NameRole == RolesEnum.Administrator)
-            {
-                App.MF.Content = new AdministratorPage();
-            }
-            else
-            {
-                MessageBox.Show(ExceptionsEnum.RoleException);
-            }
+            App.MF.Content = new AdministratorPage();
         }
     }
 }

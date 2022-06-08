@@ -159,6 +159,15 @@
     <Compile Include="View\MainFrame\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Students\AttendancesPage.xaml.cs">
+      <DependentUpon>AttendancesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Students\HomeworkPage.xaml.cs">
+      <DependentUpon>HomeworkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Students\MonthLessons.xaml.cs">
+      <DependentUpon>MonthLessons.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Students\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
@@ -227,6 +236,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Students\AttendancesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Students\HomeworkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Students\MonthLessons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,6 +18,7 @@ namespace AWP_Foreign_Languages_WPF.Models
         public Service()
         {
             this.Group = new HashSet<Group>();
+            this.Lesson = new HashSet<Lesson>();
             this.ServiceTeacher = new HashSet<ServiceTeacher>();
         }
     
@@ -27,6 +28,8 @@ namespace AWP_Foreign_Languages_WPF.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Group> Group { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lesson> Lesson { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceTeacher> ServiceTeacher { get; set; }
     }

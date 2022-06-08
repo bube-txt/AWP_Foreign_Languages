@@ -70,6 +70,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
         }
         private void ShowPersonalPageButton()
         {
+
             App.PersonalPageButton.Visibility = Visibility.Visible;
 
             App.LogoutBorder.Visibility = Visibility.Visible;

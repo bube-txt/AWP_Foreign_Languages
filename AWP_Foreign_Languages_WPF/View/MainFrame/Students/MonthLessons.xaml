@@ -1,0 +1,26 @@
+﻿<Page x:Class="AWP_Foreign_Languages_WPF.View.MainFrame.Students.MonthLessons"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWP_Foreign_Languages_WPF.View.MainFrame.Students"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="687"
+      Title="MonthLessons">
+
+    <Grid Background="White">
+        <DataGrid x:Name="DataGridLesson" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGridLesson_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Width="1*" Binding="{Binding LessonName}"/>
+                <DataGridTextColumn Header="Дата" Width="1*" Binding="{Binding LessonDate}"/>
+                <DataGridTextColumn Header="Время" Width="1*" Binding="{Binding FormatedLessonTime}"/>
+                <DataGridTextColumn Header="Преподаватель" Width="1*" Binding="{Binding LessonTeacher}"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Домашнее задание" x:Name="ButtonHomeWorkView" Click="ButtonHomeWorkView_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -28,17 +28,12 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
 
         private void ListBoxItemAllLessons_Selected(object sender, RoutedEventArgs e)
         {
-            PersonalFrame.Content = new WIP();
+            PersonalFrame.Content = new AttendancesPage();
         }
 
         private void ListBoxItemMonthLessons_Selected(object sender, RoutedEventArgs e)
         {
-            PersonalFrame.Content = new WIP();
-        }
-
-        private void ListBoxItemHomeworks_Selected(object sender, RoutedEventArgs e)
-        {
-            PersonalFrame.Content = new WIP();
+            PersonalFrame.Content = new MonthLessons();
         }
     }
 }
