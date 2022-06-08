@@ -104,6 +104,8 @@
     <Compile Include="Models\LessonTeacher.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partials\AttendancePartial.cs" />
+    <Compile Include="Models\Partials\ClientGroupPartial.cs" />
     <Compile Include="Models\Partials\ClientPartial.cs" />
     <Compile Include="Models\Partials\LessonPartial.cs" />
     <Compile Include="Models\Partials\TeacherPartial.cs" />
@@ -132,6 +134,9 @@
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\MainFrame\Administrator\Frame\AdministratorPage.xaml.cs">
       <DependentUpon>AdministratorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\AttendancePage.xaml.cs">
+      <DependentUpon>AttendancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\HomeworkPage.xaml.cs">
       <DependentUpon>HomeworkPage.xaml</DependentUpon>
@@ -190,6 +195,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MainFrame\Administrator\Frame\AdministratorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\AttendancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

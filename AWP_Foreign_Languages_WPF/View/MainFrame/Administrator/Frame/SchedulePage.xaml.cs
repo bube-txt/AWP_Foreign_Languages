@@ -341,5 +341,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
                 return true;
             }
         }
+
+        private void ButtonAttendanceView_Click(object sender, RoutedEventArgs e)
+        {
+            App.MF.Content = new AttendancePage();
+        }
     }
 }

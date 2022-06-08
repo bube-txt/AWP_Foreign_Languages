@@ -24,6 +24,7 @@
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Домашнее задание" x:Name="ButtonHomeWorkView" Click="ButtonHomeWorkView_Click"/>
+                    <MenuItem Header="Посещаемость" x:Name="ButtonAttendanceView" Click="ButtonAttendanceView_Click"/>
                     <Separator/>
                     <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click" />
                     <Separator/>

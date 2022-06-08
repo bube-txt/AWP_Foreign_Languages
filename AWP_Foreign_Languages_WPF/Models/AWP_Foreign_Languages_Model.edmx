@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IdAttendance" />
           </Key>
-          <Property Name="IdAttendance" Type="int" Nullable="false" />
+          <Property Name="IdAttendance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdLesson" Type="int" Nullable="false" />
           <Property Name="BoolAttendance" Type="tinyint" />
@@ -55,7 +55,7 @@
           <Property Name="DateLesson" Type="date" Nullable="false" />
           <Property Name="TimeLesson" Type="time" Precision="7" Nullable="false" />
           <Property Name="IdTeacherLesson" Type="int" Nullable="false" />
-          <Property Name="HomeworkLesson" Type="text" />
+          <Property Name="HomeworkLesson" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="LessonTeacher">
           <Key>
@@ -551,7 +551,7 @@
           <Key>
             <PropertyRef Name="IdAttendance" />
           </Key>
-          <Property Name="IdAttendance" Type="Int32" Nullable="false" />
+          <Property Name="IdAttendance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="IdLesson" Type="Int32" Nullable="false" />
           <Property Name="BoolAttendance" Type="Byte" />
@@ -610,7 +610,7 @@
           <Property Name="DateLesson" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TimeLesson" Type="Time" Nullable="false" Precision="7" />
           <Property Name="IdTeacherLesson" Type="Int32" Nullable="false" />
-          <Property Name="HomeworkLesson" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HomeworkLesson" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Attendance" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" FromRole="Lesson" ToRole="Attendance" />
           <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
           <NavigationProperty Name="LessonTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson" FromRole="Lesson" ToRole="LessonTeacher" />
