@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Models\Partials\ClientPartial.cs" />
     <Compile Include="Models\Partials\LessonPartial.cs" />
+    <Compile Include="Models\Partials\TeacherPartial.cs" />
     <Compile Include="Models\Partials\UserPartial.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
@@ -153,16 +154,16 @@
     <Compile Include="View\MainFrame\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\Student\StudentPage.xaml.cs">
+    <Compile Include="View\MainFrame\Students\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\Student\WIPPage.xaml.cs">
+    <Compile Include="View\MainFrame\Students\WIPPage.xaml.cs">
       <DependentUpon>WIPPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\Teacher\TeacherPage.xaml.cs">
+    <Compile Include="View\MainFrame\Teachers\TeacherPage.xaml.cs">
       <DependentUpon>TeacherPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\Teacher\WIPPage.xaml.cs">
+    <Compile Include="View\MainFrame\Teachers\WIPPage.xaml.cs">
       <DependentUpon>WIPPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\WelcomePage.xaml.cs">
@@ -220,19 +221,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainFrame\Student\StudentPage.xaml">
+    <Page Include="View\MainFrame\Students\StudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainFrame\Student\WIPPage.xaml">
+    <Page Include="View\MainFrame\Students\WIPPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainFrame\Teacher\TeacherPage.xaml">
+    <Page Include="View\MainFrame\Teachers\TeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainFrame\Teacher\WIPPage.xaml">
+    <Page Include="View\MainFrame\Teachers\WIPPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

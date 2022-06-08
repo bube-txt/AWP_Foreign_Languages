@@ -35,7 +35,14 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
 
                 if (!String.IsNullOrEmpty(selectedLesson.HomeworkLesson))
                 {
-                    RichTextBoxHomeWork.Document = (FlowDocument)XamlReader.Parse(selectedLesson.HomeworkLesson);
+                    try
+                    {
+                        RichTextBoxHomeWork.Document = (FlowDocument)XamlReader.Parse(selectedLesson.HomeworkLesson);
+                    }
+                    catch
+                    {
+                        RichTextBoxHomeWork.Document = null;
+                    }
                 }
             }
         }
@@ -59,11 +66,11 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         {
             if (App.ActiveUser.Role.NameRole == RolesEnum.Client)
             {
-                App.MF.Content = new StudentsPage(); // UNDONE: Когда учащийся будет доработан - переделать!
+                App.MF.Content = new StudentsPage();
             }
             else if (App.ActiveUser.Role.NameRole == RolesEnum.Teacher)
             {
-                App.MF.Content = new TeachersPage(); // UNDONE: Когда учитель будет доработан - переделать!
+                App.MF.Content = new TeachersPage();
             }
             else if (App.ActiveUser.Role.NameRole == RolesEnum.Administrator)
             {

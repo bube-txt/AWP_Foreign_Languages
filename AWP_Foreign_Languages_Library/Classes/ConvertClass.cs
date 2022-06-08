@@ -16,6 +16,7 @@ namespace AWP_Foreign_Languages_Library.Classes
         {
             return time.Hours + ":" + ((time.Minutes < 10) ? "0" + time.Minutes.ToString() : time.Minutes.ToString());
         }
+        // UNDONE: Ошибка кодировки ДЗ
         public static string RichTextToString(FlowDocument richText)
         {
             StringWriter wr = new StringWriter();

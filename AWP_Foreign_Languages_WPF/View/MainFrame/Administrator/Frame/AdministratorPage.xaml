@@ -21,7 +21,10 @@
                 <TextBlock Text="Ученики"/>
             </ListBoxItem>
             <ListBoxItem Selected="ListBoxItemTeachers_Selected" Margin="0 2">
-                <TextBlock Text="Преподаватели" Foreground="#9D9D9D"/>
+                <StackPanel>
+                    <TextBlock Text="Преподаватели"/>
+                    <TextBlock Text="и услуги"/>
+                </StackPanel>
             </ListBoxItem>
             <ListBoxItem Selected="ListBoxItemServices_Selected" Margin="0 2">
                 <TextBlock Text="Услуги"/>

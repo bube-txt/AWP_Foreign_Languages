@@ -3,7 +3,7 @@ using AWP_Foreign_Languages_WPF.Models;
 using AWP_Foreign_Languages_WPF.View.MainFrame;
 using AWP_Foreign_Languages_WPF.View.MainFrame.Administrator;
 using AWP_Foreign_Languages_WPF.View.MainFrame.Students;
-using AWP_Foreign_Languages_WPF.View.MainFrame.Teacher;
+using AWP_Foreign_Languages_WPF.View.MainFrame.Teachers;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;

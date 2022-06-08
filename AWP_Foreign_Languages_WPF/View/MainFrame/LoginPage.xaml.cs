@@ -1,6 +1,6 @@
 ﻿using AWP_Foreign_Languages_WPF.Models;
 using AWP_Foreign_Languages_WPF.View.MainFrame.Students;
-using AWP_Foreign_Languages_WPF.View.MainFrame.Teacher;
+using AWP_Foreign_Languages_WPF.View.MainFrame.Teachers;
 using AWP_Foreign_Languages_WPF.View.MainFrame.Administrator;
 using System.Collections.Generic;
 using System.Linq;

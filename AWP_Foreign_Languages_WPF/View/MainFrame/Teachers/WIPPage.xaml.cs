@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AWP_Foreign_Languages_WPF.View.MainFrame.Teacher
+namespace AWP_Foreign_Languages_WPF.View.MainFrame.Teachers
 {
     /// <summary>
     /// Логика взаимодействия для WIP.xaml
