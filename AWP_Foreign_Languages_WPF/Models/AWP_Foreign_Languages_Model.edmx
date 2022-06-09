@@ -14,6 +14,15 @@
           <Property Name="IdLesson" Type="int" Nullable="false" />
           <Property Name="BoolAttendance" Type="tinyint" />
         </EntityType>
+        <EntityType Name="Callback">
+          <Key>
+            <PropertyRef Name="IdCallback" />
+          </Key>
+          <Property Name="IdCallback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClientCallback" Type="int" Nullable="false" />
+          <Property Name="TextCallback" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TimeCallback" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="IdClient" />
@@ -64,6 +73,17 @@
           <Property Name="IdLessonTeacher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdLesson" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="IdMessage" />
+          </Key>
+          <Property Name="IdMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClientMessage" Type="int" Nullable="false" />
+          <Property Name="IdTeacherMessage" Type="int" Nullable="false" />
+          <Property Name="TextMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateMessage" Type="date" Nullable="false" />
+          <Property Name="TimeMessage" Type="time" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -151,6 +171,18 @@
             </Principal>
             <Dependent Role="Attendance">
               <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Callback_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Callback" Type="Self.Callback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Callback">
+              <PropertyRef Name="IdClientCallback" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -262,6 +294,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Message_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdClientMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdTeacherMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ServiceTeacher_Service">
           <End Role="Service" Type="Self.Service" Multiplicity="1" />
           <End Role="ServiceTeacher" Type="Self.ServiceTeacher" Multiplicity="*" />
@@ -348,12 +404,14 @@
         </Association>
         <EntityContainer Name="Хранилище AWP_Foreign_LanguagesModelContainer">
           <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Callback" EntityType="Self.Callback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientGroup" EntityType="Self.ClientGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LessonTeacher" EntityType="Self.LessonTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceTeacher" EntityType="Self.ServiceTeacher" Schema="dbo" store:Type="Tables" />
@@ -368,6 +426,10 @@
           <AssociationSet Name="FK_Attendance_Lesson" Association="Self.FK_Attendance_Lesson">
             <End Role="Lesson" EntitySet="Lesson" />
             <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Callback_Client" Association="Self.FK_Callback_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Callback" EntitySet="Callback" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
             <End Role="User" EntitySet="User" />
@@ -404,6 +466,14 @@
           <AssociationSet Name="FK_LessonTeacher_User" Association="Self.FK_LessonTeacher_User">
             <End Role="User" EntitySet="User" />
             <End Role="LessonTeacher" EntitySet="LessonTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Client" Association="Self.FK_Message_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Teacher" Association="Self.FK_Message_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Message" EntitySet="Message" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceTeacher_Service" Association="Self.FK_ServiceTeacher_Service">
             <End Role="Service" EntitySet="Service" />
@@ -470,12 +540,14 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="Attendance" EntityType="AWP_Foreign_LanguagesModel.Attendance" />
+          <EntitySet Name="Callback" EntityType="AWP_Foreign_LanguagesModel.Callback" />
           <EntitySet Name="Client" EntityType="AWP_Foreign_LanguagesModel.Client" />
           <EntitySet Name="ClientGroup" EntityType="AWP_Foreign_LanguagesModel.ClientGroup" />
           <EntitySet Name="Group" EntityType="AWP_Foreign_LanguagesModel.Group" />
           <EntitySet Name="Language" EntityType="AWP_Foreign_LanguagesModel.Language" />
           <EntitySet Name="Lesson" EntityType="AWP_Foreign_LanguagesModel.Lesson" />
           <EntitySet Name="LessonTeacher" EntityType="AWP_Foreign_LanguagesModel.LessonTeacher" />
+          <EntitySet Name="Message" EntityType="AWP_Foreign_LanguagesModel.Message" />
           <EntitySet Name="Role" EntityType="AWP_Foreign_LanguagesModel.Role" />
           <EntitySet Name="Service" EntityType="AWP_Foreign_LanguagesModel.Service" />
           <EntitySet Name="ServiceTeacher" EntityType="AWP_Foreign_LanguagesModel.ServiceTeacher" />
@@ -491,6 +563,10 @@
             <End Role="Lesson" EntitySet="Lesson" />
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
+          <AssociationSet Name="FK_Callback_Client" Association="AWP_Foreign_LanguagesModel.FK_Callback_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Callback" EntitySet="Callback" />
+          </AssociationSet>
           <AssociationSet Name="FK_Client_User" Association="AWP_Foreign_LanguagesModel.FK_Client_User">
             <End Role="User" EntitySet="User" />
             <End Role="Client" EntitySet="Client" />
@@ -498,6 +574,10 @@
           <AssociationSet Name="FK_ClientGroup_Client" Association="AWP_Foreign_LanguagesModel.FK_ClientGroup_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientGroup" EntitySet="ClientGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Client" Association="AWP_Foreign_LanguagesModel.FK_Message_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Message" EntitySet="Message" />
           </AssociationSet>
           <AssociationSet Name="FK_ClientGroup_Group" Association="AWP_Foreign_LanguagesModel.FK_ClientGroup_Group">
             <End Role="Group" EntitySet="Group" />
@@ -534,6 +614,10 @@
           <AssociationSet Name="FK_LessonTeacher_User" Association="AWP_Foreign_LanguagesModel.FK_LessonTeacher_User">
             <End Role="User" EntitySet="User" />
             <End Role="LessonTeacher" EntitySet="LessonTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Teacher" Association="AWP_Foreign_LanguagesModel.FK_Message_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Message" EntitySet="Message" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="AWP_Foreign_LanguagesModel.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -578,6 +662,16 @@
           <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Client" FromRole="Attendance" ToRole="Client" />
           <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" FromRole="Attendance" ToRole="Lesson" />
         </EntityType>
+        <EntityType Name="Callback">
+          <Key>
+            <PropertyRef Name="IdCallback" />
+          </Key>
+          <Property Name="IdCallback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClientCallback" Type="Int32" Nullable="false" />
+          <Property Name="TextCallback" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeCallback" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Callback_Client" FromRole="Callback" ToRole="Client" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="IdClient" />
@@ -585,8 +679,10 @@
           <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUserClient" Type="Int32" />
           <NavigationProperty Name="Attendance" Relationship="AWP_Foreign_LanguagesModel.FK_Attendance_Client" FromRole="Client" ToRole="Attendance" />
+          <NavigationProperty Name="Callback" Relationship="AWP_Foreign_LanguagesModel.FK_Callback_Client" FromRole="Client" ToRole="Callback" />
           <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_Client_User" FromRole="Client" ToRole="User" />
           <NavigationProperty Name="ClientGroup" Relationship="AWP_Foreign_LanguagesModel.FK_ClientGroup_Client" FromRole="Client" ToRole="ClientGroup" />
+          <NavigationProperty Name="Message" Relationship="AWP_Foreign_LanguagesModel.FK_Message_Client" FromRole="Client" ToRole="Message" />
         </EntityType>
         <EntityType Name="ClientGroup">
           <Key>
@@ -646,6 +742,19 @@
           <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_Lesson" FromRole="LessonTeacher" ToRole="Lesson" />
           <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_User" FromRole="LessonTeacher" ToRole="User" />
         </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="IdMessage" />
+          </Key>
+          <Property Name="IdMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClientMessage" Type="Int32" Nullable="false" />
+          <Property Name="IdTeacherMessage" Type="Int32" Nullable="false" />
+          <Property Name="TextMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateMessage" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeMessage" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Message_Client" FromRole="Message" ToRole="Client" />
+          <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Message_Teacher" FromRole="Message" ToRole="Teacher" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="IdRole" />
@@ -694,6 +803,7 @@
           <Property Name="IdUserTeacher" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="AWP_Foreign_LanguagesModel.FK_Teacher_Language" FromRole="Teacher" ToRole="Language" />
           <NavigationProperty Name="Lesson" Relationship="AWP_Foreign_LanguagesModel.FK_Lesson_Teacher" FromRole="Teacher" ToRole="Lesson" />
+          <NavigationProperty Name="Message" Relationship="AWP_Foreign_LanguagesModel.FK_Message_Teacher" FromRole="Teacher" ToRole="Message" />
           <NavigationProperty Name="ServiceTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_ServiceTeacher_Teacher" FromRole="Teacher" ToRole="ServiceTeacher" />
           <NavigationProperty Name="User" Relationship="AWP_Foreign_LanguagesModel.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
           <NavigationProperty Name="TeacherGroup" Relationship="AWP_Foreign_LanguagesModel.FK_TeacherGroup_Teacher" FromRole="Teacher" ToRole="TeacherGroup" />
@@ -752,6 +862,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Callback_Client">
+          <End Type="AWP_Foreign_LanguagesModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Callback" Role="Callback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Callback">
+              <PropertyRef Name="IdClientCallback" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Client_User">
           <End Type="AWP_Foreign_LanguagesModel.User" Role="User" Multiplicity="0..1" />
           <End Type="AWP_Foreign_LanguagesModel.Client" Role="Client" Multiplicity="*" />
@@ -773,6 +895,18 @@
             </Principal>
             <Dependent Role="ClientGroup">
               <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Client">
+          <End Type="AWP_Foreign_LanguagesModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdClientMessage" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -884,6 +1018,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Message_Teacher">
+          <End Type="AWP_Foreign_LanguagesModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="AWP_Foreign_LanguagesModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="IdTeacher" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdTeacherMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Type="AWP_Foreign_LanguagesModel.Role" Role="Role" Multiplicity="1" />
           <End Type="AWP_Foreign_LanguagesModel.User" Role="User" Multiplicity="*" />
@@ -960,6 +1106,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Callback">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Callback">
+              <MappingFragment StoreEntitySet="Callback">
+                <ScalarProperty Name="TimeCallback" ColumnName="TimeCallback" />
+                <ScalarProperty Name="TextCallback" ColumnName="TextCallback" />
+                <ScalarProperty Name="IdClientCallback" ColumnName="IdClientCallback" />
+                <ScalarProperty Name="IdCallback" ColumnName="IdCallback" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Client">
               <MappingFragment StoreEntitySet="Client">
@@ -1014,6 +1170,18 @@
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
                 <ScalarProperty Name="IdLessonTeacher" ColumnName="IdLessonTeacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="TimeMessage" ColumnName="TimeMessage" />
+                <ScalarProperty Name="DateMessage" ColumnName="DateMessage" />
+                <ScalarProperty Name="TextMessage" ColumnName="TextMessage" />
+                <ScalarProperty Name="IdTeacherMessage" ColumnName="IdTeacherMessage" />
+                <ScalarProperty Name="IdClientMessage" ColumnName="IdClientMessage" />
+                <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

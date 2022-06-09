@@ -11,7 +11,6 @@ namespace AWP_Foreign_Languages_WPF.Models
     partial class Lesson
     {
         Core db = new Core();
-        Service srv = new Service();
         public string TeacherFullName
         {
             get
@@ -30,7 +29,7 @@ namespace AWP_Foreign_Languages_WPF.Models
         {
             get
             {
-                return srv.NameService;
+                return db.context.Service.Where(x => x.IdService == ServiceIdLesson).FirstOrDefault().NameService;
             }
         }
         public string FormatedLessonDate

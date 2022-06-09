@@ -13,7 +13,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Width="1*" Binding="{Binding LessonName}"/>
                 <DataGridTextColumn Header="Дата" Width="1*" Binding="{Binding LessonDate}"/>
-                <DataGridTextColumn Header="Время" Width="1*" Binding="{Binding FormatedLessonTime}"/>
+                <DataGridTextColumn Header="Время" Width="1*" Binding="{Binding LessonTime}"/>
                 <DataGridTextColumn Header="Преподаватель" Width="1*" Binding="{Binding LessonTeacher}"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>

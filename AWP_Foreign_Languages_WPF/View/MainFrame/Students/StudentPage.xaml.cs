@@ -24,6 +24,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         public StudentPage()
         {
             InitializeComponent();
+            App.PF = PersonalFrame;
         }
 
         private void ListBoxItemAllLessons_Selected(object sender, RoutedEventArgs e)
@@ -34,6 +35,16 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         private void ListBoxItemMonthLessons_Selected(object sender, RoutedEventArgs e)
         {
             PersonalFrame.Content = new MonthLessons();
+        }
+
+        private void ListBoxItemCallback_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBoxItemMessage_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new MessangerPage();
         }
     }
 }

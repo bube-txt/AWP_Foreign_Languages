@@ -19,6 +19,7 @@ namespace AWP_Foreign_Languages_WPF
         /// MainFrame
         /// </summary>
         public static Frame MF = null;
+        public static Frame PF = null;
         public static Button PersonalPageButton = null;
         public static Border LoginBorder = null;
         public static Border LogoutBorder = null;

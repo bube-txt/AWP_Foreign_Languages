@@ -48,7 +48,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-            App.MF.Content = new AttendancesPage();
+            App.MF.NavigationService.GoBack();
         }
     }
 }

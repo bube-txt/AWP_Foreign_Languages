@@ -28,12 +28,14 @@ namespace AWP_Foreign_Languages_WPF.Models
         }
     
         public virtual DbSet<Attendance> Attendance { get; set; }
+        public virtual DbSet<Callback> Callback { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientGroup> ClientGroup { get; set; }
         public virtual DbSet<Group> Group { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<LessonTeacher> LessonTeacher { get; set; }
+        public virtual DbSet<Message> Message { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceTeacher> ServiceTeacher { get; set; }

@@ -34,6 +34,6 @@
 
             </Grid>
         </StackPanel>
-        <RichTextBox Grid.Row="1" x:Name="RichTextBoxHomeWork" Margin="5"/>
+        <RichTextBox Grid.Row="1" x:Name="RichTextBoxHomeWork" Margin="5" IsReadOnly="True"/>
     </Grid>
 </Page>

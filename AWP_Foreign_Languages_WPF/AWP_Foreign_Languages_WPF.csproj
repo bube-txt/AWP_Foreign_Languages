@@ -86,6 +86,9 @@
     <Compile Include="Models\Attendance.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Callback.cs">
+      <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Client.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
@@ -104,10 +107,14 @@
     <Compile Include="Models\LessonTeacher.cs">
       <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>AWP_Foreign_Languages_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Partials\AttendancePartial.cs" />
     <Compile Include="Models\Partials\ClientGroupPartial.cs" />
     <Compile Include="Models\Partials\ClientPartial.cs" />
     <Compile Include="Models\Partials\LessonPartial.cs" />
+    <Compile Include="Models\Partials\MessagePartial.cs" />
     <Compile Include="Models\Partials\TeacherPartial.cs" />
     <Compile Include="Models\Partials\UserPartial.cs" />
     <Compile Include="Models\Role.cs">
@@ -164,6 +171,9 @@
     </Compile>
     <Compile Include="View\MainFrame\Students\HomeworkPage.xaml.cs">
       <DependentUpon>HomeworkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Students\MessangerPage.xaml.cs">
+      <DependentUpon>MessangerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\Students\MonthLessons.xaml.cs">
       <DependentUpon>MonthLessons.xaml</DependentUpon>
@@ -244,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\Students\HomeworkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Students\MessangerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

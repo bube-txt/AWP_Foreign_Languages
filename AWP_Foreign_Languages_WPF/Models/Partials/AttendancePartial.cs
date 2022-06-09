@@ -59,6 +59,13 @@ namespace AWP_Foreign_Languages_WPF.Models
                 return Lesson.FormatedLessonDate;
             }
         }
+        public string LessonTime
+        {
+            get
+            {
+                return Lesson.FormatedLessonTime;
+            }
+        }
         public string LessonTeacher
         {
             get

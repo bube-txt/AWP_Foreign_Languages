@@ -23,6 +23,12 @@
                     <TextBlock Text="текущем месяце"/>
                 </StackPanel>
             </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemCallback_Selected" Margin="0 2">
+                <TextBlock Text="Отзыв"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemMessage_Selected" Margin="0 2">
+                <TextBlock Text="Сообщения"/>
+            </ListBoxItem>
         </ListBox>
         <Frame x:Name="PersonalFrame" Grid.Column="1"/>
     </Grid>

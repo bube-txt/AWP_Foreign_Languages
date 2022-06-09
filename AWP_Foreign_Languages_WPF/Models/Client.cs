@@ -18,7 +18,9 @@ namespace AWP_Foreign_Languages_WPF.Models
         public Client()
         {
             this.Attendance = new HashSet<Attendance>();
+            this.Callback = new HashSet<Callback>();
             this.ClientGroup = new HashSet<ClientGroup>();
+            this.Message = new HashSet<Message>();
         }
     
         public int IdClient { get; set; }
@@ -26,8 +28,12 @@ namespace AWP_Foreign_Languages_WPF.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendance { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Callback> Callback { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientGroup> ClientGroup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Message { get; set; }
     }
 }
