@@ -39,7 +39,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
 
         private void ListBoxItemCallback_Selected(object sender, RoutedEventArgs e)
         {
-
+            PersonalFrame.Content = new CallbackPage();
         }
 
         private void ListBoxItemMessage_Selected(object sender, RoutedEventArgs e)

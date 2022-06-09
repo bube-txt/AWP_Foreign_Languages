@@ -24,9 +24,9 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         Core db = new Core();
         public CallbackPage()
         {
-            Update();
-
             InitializeComponent();
+
+            Update();
         }
         private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)
         {
@@ -49,7 +49,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         private void Update()
         {
             List<Callback> messages = db.context.Callback.AsEnumerable().Reverse().ToList();
-            ListViewMessanger.ItemsSource = messages;
+            if (messages.Count > 0)
+            {
+                ListViewCallback.ItemsSource = messages;
+            }
         }
     }
 }
