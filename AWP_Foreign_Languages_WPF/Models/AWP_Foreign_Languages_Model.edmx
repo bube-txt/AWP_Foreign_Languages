@@ -21,7 +21,8 @@
           <Property Name="IdCallback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClientCallback" Type="int" Nullable="false" />
           <Property Name="TextCallback" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TimeCallback" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DateCallback" Type="date" Nullable="false" />
+          <Property Name="TimeCallback" Type="time" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -83,7 +84,7 @@
           <Property Name="IdTeacherMessage" Type="int" Nullable="false" />
           <Property Name="TextMessage" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateMessage" Type="date" Nullable="false" />
-          <Property Name="TimeMessage" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TimeMessage" Type="time" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -669,7 +670,8 @@
           <Property Name="IdCallback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClientCallback" Type="Int32" Nullable="false" />
           <Property Name="TextCallback" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TimeCallback" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DateCallback" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeCallback" Type="Time" Nullable="false" Precision="0" />
           <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Callback_Client" FromRole="Callback" ToRole="Client" />
         </EntityType>
         <EntityType Name="Client">
@@ -751,7 +753,7 @@
           <Property Name="IdTeacherMessage" Type="Int32" Nullable="false" />
           <Property Name="TextMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateMessage" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TimeMessage" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TimeMessage" Type="Time" Nullable="false" Precision="0" />
           <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Message_Client" FromRole="Message" ToRole="Client" />
           <NavigationProperty Name="Teacher" Relationship="AWP_Foreign_LanguagesModel.FK_Message_Teacher" FromRole="Message" ToRole="Teacher" />
         </EntityType>
@@ -1110,6 +1112,7 @@
             <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.Callback">
               <MappingFragment StoreEntitySet="Callback">
                 <ScalarProperty Name="TimeCallback" ColumnName="TimeCallback" />
+                <ScalarProperty Name="DateCallback" ColumnName="DateCallback" />
                 <ScalarProperty Name="TextCallback" ColumnName="TextCallback" />
                 <ScalarProperty Name="IdClientCallback" ColumnName="IdClientCallback" />
                 <ScalarProperty Name="IdCallback" ColumnName="IdCallback" />

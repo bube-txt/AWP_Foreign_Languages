@@ -169,6 +169,9 @@
     <Compile Include="View\MainFrame\Students\AttendancesPage.xaml.cs">
       <DependentUpon>AttendancesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Students\CallbackPage.xaml.cs">
+      <DependentUpon>CallbackPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Students\HomeworkPage.xaml.cs">
       <DependentUpon>HomeworkPage.xaml</DependentUpon>
     </Compile>
@@ -250,6 +253,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\Students\AttendancesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Students\CallbackPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

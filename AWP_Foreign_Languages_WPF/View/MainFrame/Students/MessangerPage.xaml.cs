@@ -27,6 +27,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
             InitializeComponent();
 
             ComboBoxTeachers.ItemsSource = db.context.Teacher.ToList();
+
             ComboBoxTeachers.DisplayMemberPath = "FullName";
             ComboBoxTeachers.SelectedValuePath = "IdTeacher";
             ComboBoxTeachers.SelectedIndex = 0;
@@ -34,10 +35,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
 
         private void ComboBoxTeachers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboBoxTeachers.SelectedIndex != -1)
-            {
-                ListViewMessanger.ItemsSource = db.context.Message.Where(x => x.IdTeacherMessage == (int)ComboBoxTeachers.SelectedValue).ToList();
-            }
+            Update();
         }
 
         private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)
@@ -55,6 +53,16 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
 
                 db.context.Message.Add(message);
                 db.context.SaveChanges();
+                Update();
+            }
+        }
+
+        private void Update()
+        {
+            if (ComboBoxTeachers.SelectedIndex != -1)
+            {
+                List<Message> messages = db.context.Message.Where(x => x.IdTeacherMessage == (int)ComboBoxTeachers.SelectedValue).AsEnumerable().Reverse().ToList();
+                ListViewMessanger.ItemsSource = messages;
             }
         }
     }
