@@ -194,6 +194,15 @@
     <Compile Include="View\MainFrame\Students\WIPPage.xaml.cs">
       <DependentUpon>WIPPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Teachers\AttendancePage.xaml.cs">
+      <DependentUpon>AttendancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Teachers\HomeworkPage.xaml.cs">
+      <DependentUpon>HomeworkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Teachers\LessonsPage.xaml.cs">
+      <DependentUpon>LessonsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Teachers\MessagesPage.xaml.cs">
       <DependentUpon>MessagesPage.xaml</DependentUpon>
     </Compile>
@@ -295,6 +304,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\Students\WIPPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Teachers\AttendancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Teachers\HomeworkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Teachers\LessonsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

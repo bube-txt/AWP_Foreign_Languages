@@ -23,16 +23,12 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Teachers
         public TeacherPage()
         {
             InitializeComponent();
+            App.PF = PersonalFrame;
         }
 
-        private void ListBoxItemAttendance_Selected(object sender, RoutedEventArgs e)
+        private void ListBoxLessons_Selected(object sender, RoutedEventArgs e)
         {
-            PersonalFrame.Content = new WIP();
-        }
-
-        private void ListBoxItemHomeworks_Selected(object sender, RoutedEventArgs e)
-        {
-            PersonalFrame.Content = new WIP();
+            PersonalFrame.Content = new LessonsPage();
         }
 
         private void ListBoxItemMessages_Selected(object sender, RoutedEventArgs e)

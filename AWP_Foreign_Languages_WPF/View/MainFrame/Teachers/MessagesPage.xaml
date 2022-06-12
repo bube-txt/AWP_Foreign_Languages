@@ -23,7 +23,7 @@
                 <DataTemplate>
                     <Border BorderBrush="#6D7D96" BorderThickness="1">
                         <StackPanel Margin="0 10">
-                            <Grid Margin="10 0 10 10" HorizontalAlignment="Center" Width="600">
+                            <Grid Margin="10 0 10 10" HorizontalAlignment="Center" Width="660">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
