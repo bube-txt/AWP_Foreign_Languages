@@ -146,6 +146,9 @@
     <Compile Include="View\MainFrame\Administrator\Frame\AttendancePage.xaml.cs">
       <DependentUpon>AttendancePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\CallbacksPage.xaml.cs">
+      <DependentUpon>CallbacksPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\HomeworkPage.xaml.cs">
       <DependentUpon>HomeworkPage.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,9 @@
     </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\TeachersPage.xaml.cs">
       <DependentUpon>TeachersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\BannedPage.xaml.cs">
+      <DependentUpon>BannedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -187,6 +193,9 @@
     </Compile>
     <Compile Include="View\MainFrame\Students\WIPPage.xaml.cs">
       <DependentUpon>WIPPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Teachers\MessagesPage.xaml.cs">
+      <DependentUpon>MessagesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\Teachers\TeacherPage.xaml.cs">
       <DependentUpon>TeacherPage.xaml</DependentUpon>
@@ -225,6 +234,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\CallbacksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainFrame\Administrator\Frame\HomeworkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\Administrator\Frame\TeachersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\BannedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainFrame\Students\WIPPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Teachers\MessagesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

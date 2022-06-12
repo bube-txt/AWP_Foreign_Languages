@@ -61,7 +61,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
         {
             if (ComboBoxTeachers.SelectedIndex != -1)
             {
-                List<Message> messages = db.context.Message.Where(x => x.IdTeacherMessage == (int)ComboBoxTeachers.SelectedValue).AsEnumerable().Reverse().ToList();
+                List<Message> messages = db.context.Message.Where(x => x.IdTeacherMessage == (int)ComboBoxTeachers.SelectedValue && x.IdClientMessage == App.ActiveClient.IdClient).AsEnumerable().Reverse().ToList();
                 ListViewMessanger.ItemsSource = messages;
             }
         }

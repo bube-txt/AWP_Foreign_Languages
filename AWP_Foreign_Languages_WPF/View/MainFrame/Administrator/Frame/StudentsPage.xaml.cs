@@ -29,7 +29,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         {
             InitializeComponent();
 
-            students = db.context.Client.ToList();
+            students = db.context.Client.Where(x => x.User.Banned == 0).ToList();
             DataGridSchedule.ItemsSource = students;
         }
 
@@ -55,10 +55,13 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
         {
             if ((Client)DataGridSchedule.SelectedItem != null)
             {
-                db.context.Client.Remove(lastSelected);
+                User user = lastSelected.User;
+                /*db.context.Client.Remove(lastSelected);
+                db.context.User.Remove(user);*/
+                db.context.User.Where(x => x.IdUser == user.IdUser).FirstOrDefault().Banned = 1;
                 db.context.SaveChanges();
 
-                DataGridSchedule.ItemsSource = db.context.Client.ToList();
+                DataGridSchedule.ItemsSource = db.context.Client.Where(x => x.User.Banned == 0).ToList();
             }
         }
 
@@ -146,6 +149,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             TextBoxPhoneEdit.Text = null;
             DatePickerDOBEdit.SelectedDate = null;
             ComboBoxEditGender.SelectedIndex = -1;
+            TextBoxPasswordEdit.Text = null;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -157,6 +161,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             TextBoxEmailEdit.Text = lastSelected.User.EmailUser;
             TextBoxPhoneEdit.Text = lastSelected.User.PhoneUser;
             DatePickerDOBEdit.SelectedDate = lastSelected.User.BirthdayUser;
+            TextBoxPasswordEdit.Text = lastSelected.User.PasswordUser;
             int gender = -1;
             if (lastSelected.User.SexUser == "M")
             {
@@ -189,6 +194,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             int sex = ComboBoxEditGender.SelectedIndex;
 
             Client selectedLesson = db.context.Client.Where(x => x.IdClient == lastSelected.IdClient).FirstOrDefault();
+            User user = db.context.Client.Where(x => x.IdClient == lastSelected.IdClient).FirstOrDefault().User;
 
             selectedLesson.User.LastNameUser = fullName[0];
             selectedLesson.User.FirstNameUser = fullName[1];
@@ -207,7 +213,9 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             }
             selectedLesson.User.SexUser = gender;
 
-            students = db.context.Client.ToList();
+            user.PasswordUser = TextBoxPasswordEdit.Text;
+
+            students = db.context.Client.Where(x => x.User.Banned == 0).ToList();
             DataGridSchedule.ItemsSource = students;
 
             ClearEdit();
@@ -221,13 +229,15 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
             var phone = TextBoxPhoneEdit.Text;
             var date = DatePickerDOBEdit.SelectedDate;
             var gender = ComboBoxEditGender.SelectedValue;
+            var password = TextBoxPasswordEdit.Text;
 
             if (
                 fullname == null ||
                 email == null ||
                 phone == null ||
                 date == null||
-                gender == null
+                gender == null ||
+                password == null
                 )
             {
                 return false;
@@ -240,11 +250,6 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame
                 }
                 return true;
             }
-        }
-
-        private void ButtonDel_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void TextBoxTextBoxFullNameSearch_TextChanged(object sender, TextChangedEventArgs e)

@@ -10,7 +10,7 @@ namespace AWP_Foreign_Languages_WPF.Assets.Enums
     {
         public const string Client = "Клиент";
         public const string Student = "Клиент";
-        public const string Teacher = "Учитель";
+        public const string Teacher = "Преподаватель";
         public const string Administrator = "Администратор";
         public const string TestMode = "Тестовый режим";
     }

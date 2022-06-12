@@ -36,7 +36,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator
             PersonalFrame.Content = new SchedulePage();
         }
 
-        private void ListBoxItemTeachers_Selected(object sender, RoutedEventArgs e)
+        private void ListBoxItemTeachersAndServices_Selected(object sender, RoutedEventArgs e)
         {
             PersonalFrame.Content = new TeachersPage();
         }
@@ -44,6 +44,21 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator
         private void ListBoxItemServices_Selected(object sender, RoutedEventArgs e)
         {
             PersonalFrame.Content = new ServicePage();
+        }
+
+        private void ListBoxItemTeacher_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBoxItemFormGroups_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBoxItemCallbacks_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new CallbacksPage();
         }
     }
 }

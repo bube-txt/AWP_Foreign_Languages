@@ -37,8 +37,9 @@ namespace AWP_Foreign_Languages_WPF
             App.LogoutBorder = LogoutBorder;
 
             // Тестовый режим
-            App.ActiveUser = db.context.User.Where(x => x.IdUser == 5).FirstOrDefault();
+            App.ActiveUser = db.context.User.Where(x => x.IdUser == 6).FirstOrDefault();
             App.ActiveClient = db.context.Client.Where(x => x.User.IdUser == App.ActiveUser.IdUser).FirstOrDefault();
+            App.ActiveTeacher = db.context.Teacher.Where(x => x.User.IdUser == App.ActiveUser.IdUser).FirstOrDefault();
             LogInBorder.Visibility = Visibility.Collapsed;
             LogoutBorder.Visibility = Visibility.Visible;
             ButtonPersonalPage.Visibility = Visibility.Visible;
@@ -114,7 +115,11 @@ namespace AWP_Foreign_Languages_WPF
         private void Button_PersonalPageClick(object sender, RoutedEventArgs e)
         {
             User user = App.ActiveUser;
-            if (user.Role.NameRole == RolesEnum.Client)
+            if (user.Banned == 1)
+            {
+                App.MF.Navigate(new BannedPage());
+            }
+            else if (user.Role.NameRole == RolesEnum.Client)
             {
                 App.MF.Navigate(new StudentPage());
             }

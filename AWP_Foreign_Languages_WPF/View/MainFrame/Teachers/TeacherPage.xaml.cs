@@ -34,5 +34,10 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Teachers
         {
             PersonalFrame.Content = new WIP();
         }
+
+        private void ListBoxItemMessages_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new MessagesPage();
+        }
     }
 }

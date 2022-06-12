@@ -150,6 +150,7 @@
           <Property Name="BirthdayUser" Type="date" />
           <Property Name="SexUser" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="AvatarUser" Type="image" />
+          <Property Name="Banned" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Attendance_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
@@ -835,6 +836,7 @@
           <Property Name="BirthdayUser" Type="DateTime" Precision="0" />
           <Property Name="SexUser" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="AvatarUser" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Banned" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="AWP_Foreign_LanguagesModel.FK_Client_User" FromRole="User" ToRole="Client" />
           <NavigationProperty Name="LessonTeacher" Relationship="AWP_Foreign_LanguagesModel.FK_LessonTeacher_User" FromRole="User" ToRole="LessonTeacher" />
           <NavigationProperty Name="Role" Relationship="AWP_Foreign_LanguagesModel.FK_User_Role" FromRole="User" ToRole="Role" />
@@ -1246,6 +1248,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="AWP_Foreign_LanguagesModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Banned" ColumnName="Banned" />
                 <ScalarProperty Name="AvatarUser" ColumnName="AvatarUser" />
                 <ScalarProperty Name="SexUser" ColumnName="SexUser" />
                 <ScalarProperty Name="BirthdayUser" ColumnName="BirthdayUser" />

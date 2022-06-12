@@ -48,7 +48,7 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Students
 
         private void Update()
         {
-            List<Callback> messages = db.context.Callback.AsEnumerable().Reverse().ToList();
+            List<Callback> messages = db.context.Callback.Where(x => x.IdClientCallback == App.ActiveClient.IdClient).AsEnumerable().Reverse().ToList();
             if (messages.Count > 0)
             {
                 ListViewCallback.ItemsSource = messages;

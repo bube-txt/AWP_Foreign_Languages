@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\dimap\Source\Repos\bube532\AWP_Foreign_Languages\AWP_Foreign_Languages_WPF\Models\AWP_Foreign_Languages_Model.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\dimap\source\repos\bube532\AWP_Foreign_Languages\AWP_Foreign_Languages_WPF\Models\AWP_Foreign_Languages_Model.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c1dde4cd85604457bd57e1daf7acf5ff" Name="Diagram1" ZoomLevel="97">
-        <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Attendance" Width="1.5" PointX="7.5" PointY="2.75" />
+        <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Attendance" Width="1.5" PointX="10.5" PointY="4.75" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Callback" Width="1.5" PointX="8.25" PointY="15.75" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Client" Width="1.5" PointX="6" PointY="14.625" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.ClientGroup" Width="1.5" PointX="8.25" PointY="8.875" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Group" Width="1.5" PointX="6" PointY="8.625" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Language" Width="1.5" PointX="0.75" PointY="9" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Lesson" Width="1.5" PointX="5.25" PointY="4.25" />
-        <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.LessonTeacher" Width="1.5" PointX="10.5" PointY="4.875" />
+        <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.LessonTeacher" Width="1.5" PointX="7.5" PointY="2.875" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Message" Width="1.5" PointX="8.25" PointY="11.625" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Role" Width="1.5" PointX="1.5" PointY="1" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Service" Width="1.5" PointX="3.75" PointY="14.75" />
@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.Teacher" Width="1.5" PointX="3" PointY="8.5" />
         <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.TeacherGroup" Width="1.5" PointX="8.25" PointY="5.875" />
-        <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.User" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="AWP_Foreign_LanguagesModel.User" Width="1.5" PointX="0.75" PointY="3.75" />
         <AssociationConnector Association="AWP_Foreign_LanguagesModel.FK_Attendance_Client" />
         <AssociationConnector Association="AWP_Foreign_LanguagesModel.FK_Attendance_Lesson" />
         <AssociationConnector Association="AWP_Foreign_LanguagesModel.FK_Callback_Client" />

@@ -13,7 +13,14 @@ namespace AWP_Foreign_Languages_WPF.Models
         {
             get
             {
-                return "[" + Client.GetGroupName + "] " + Client.FullName;
+                if (Client.GetGroupName != null)
+                {
+                    return "[" + Client.GetGroupName + "] " + Client.FullName;
+                }
+                else
+                {
+                    return Client.FullName;
+                }
             }
         }
         public string GetFormatedDate

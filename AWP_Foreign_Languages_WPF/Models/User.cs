@@ -33,6 +33,7 @@ namespace AWP_Foreign_Languages_WPF.Models
         public Nullable<System.DateTime> BirthdayUser { get; set; }
         public string SexUser { get; set; }
         public byte[] AvatarUser { get; set; }
+        public byte Banned { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Client { get; set; }

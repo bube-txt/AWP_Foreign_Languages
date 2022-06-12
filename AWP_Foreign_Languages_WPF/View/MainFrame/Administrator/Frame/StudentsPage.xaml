@@ -25,7 +25,7 @@
                 <ContextMenu>
                     <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click" />
                     <Separator/>
-                    <MenuItem Header="Удалить">
+                    <MenuItem Header="Заблокировать">
                         <MenuItem Header="Подтвердить" x:Name="ButtonRemove" Click="ButtonRemove_Click"/>
                     </MenuItem>
                 </ContextMenu>
@@ -69,29 +69,37 @@
                 </TabItem>
                 <TabItem Header="Редактирование">
                     <StackPanel Margin="5">
-                        <StackPanel Orientation="Horizontal" Height="140">
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="ФИО" TextAlignment="Center"/>
-                                <TextBox x:Name="TextBoxFullNameEdit" Width="100"/>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Width="auto" Margin="5">
+                                    <TextBlock Text="ФИО" TextAlignment="Center"/>
+                                    <TextBox x:Name="TextBoxFullNameEdit" Width="100"/>
+                                </StackPanel>
+                                <StackPanel Width="auto" Margin="5">
+                                    <TextBlock Text="Email" TextAlignment="Center"/>
+                                    <TextBox x:Name="TextBoxEmailEdit" Width="100"/>
+                                </StackPanel>
+                                <StackPanel Width="auto" Margin="5">
+                                    <TextBlock Text="Телефон" TextAlignment="Center"/>
+                                    <TextBox x:Name="TextBoxPhoneEdit" Width="100"/>
+                                </StackPanel>
+                                <StackPanel Width="auto" Margin="5">
+                                    <TextBlock Text="Дата рождения" TextAlignment="Center"/>
+                                    <DatePicker x:Name="DatePickerDOBEdit"/>
+                                </StackPanel>
+                                <StackPanel Width="auto" Margin="5">
+                                    <TextBlock Text="Пол" Width="100" TextAlignment="Center"/>
+                                    <ComboBox x:Name="ComboBoxEditGender">
+                                        <ComboBoxItem>Мужской</ComboBoxItem>
+                                        <ComboBoxItem>Женский</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Email" TextAlignment="Center"/>
-                                <TextBox x:Name="TextBoxEmailEdit" Width="100"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Телефон" TextAlignment="Center"/>
-                                <TextBox x:Name="TextBoxPhoneEdit" Width="100"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Дата рождения" TextAlignment="Center"/>
-                                <DatePicker x:Name="DatePickerDOBEdit"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Пол" Width="100" TextAlignment="Center"/>
-                                <ComboBox x:Name="ComboBoxEditGender">
-                                    <ComboBoxItem>Мужской</ComboBoxItem>
-                                    <ComboBoxItem>Женский</ComboBoxItem>
-                                </ComboBox>
+                            <StackPanel Orientation="Horizontal" Height="91">
+                                <StackPanel Width="auto" Margin="5">
+                                    <TextBlock Text="Пароль" TextAlignment="Center"/>
+                                    <TextBox x:Name="TextBoxPasswordEdit" Width="100"/>
+                                </StackPanel>
                             </StackPanel>
                         </StackPanel>
                         <DockPanel>

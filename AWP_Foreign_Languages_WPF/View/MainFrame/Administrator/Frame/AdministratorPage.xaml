@@ -20,7 +20,7 @@
             <ListBoxItem Selected="ListBoxItemStudents_Selected" Margin="0 2">
                 <TextBlock Text="Ученики"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemTeachers_Selected" Margin="0 2">
+            <ListBoxItem Selected="ListBoxItemTeachersAndServices_Selected" Margin="0 2">
                 <StackPanel>
                     <TextBlock Text="Преподаватели"/>
                     <TextBlock Text="и услуги"/>
@@ -28,6 +28,18 @@
             </ListBoxItem>
             <ListBoxItem Selected="ListBoxItemServices_Selected" Margin="0 2">
                 <TextBlock Text="Услуги"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemTeacher_Selected" Margin="0 2">
+                <TextBlock Text="Преподаватели"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemFormGroups_Selected" Margin="0 2">
+                <StackPanel>
+                    <TextBlock Text="Формирование"/>
+                    <TextBlock Text="Групп"/>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemCallbacks_Selected" Margin="0 2">
+                <TextBlock Text="Отзывы"/>
             </ListBoxItem>
         </ListBox>
         <Frame x:Name="PersonalFrame" Grid.Column="1"/>

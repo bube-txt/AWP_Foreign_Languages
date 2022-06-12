@@ -10,6 +10,7 @@ using System.Drawing;
 using System;
 using System.Data.Entity.Validation;
 using AWP_Foreign_Languages_WPF.Assets.Enums;
+using System.Linq;
 
 namespace AWP_Foreign_Languages_WPF.View.MainFrame
 {
@@ -132,6 +133,13 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
             try
             {
                 db.context.User.Add(newUser);
+
+                Client newClient = new Client
+                {
+                    IdUserClient = db.context.User.Where(x => x.PhoneUser == newUser.PhoneUser && x.PasswordUser == newUser.PasswordUser).FirstOrDefault().IdUser,
+                };
+
+                db.context.Client.Add(newClient);
                 db.context.SaveChanges();
                 MessageBox.Show("Регистрация успешно выполнена!");
                 App.MF.Content = new LoginPage();

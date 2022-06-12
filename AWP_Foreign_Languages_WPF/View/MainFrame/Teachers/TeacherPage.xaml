@@ -14,11 +14,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ListBox>
-            <ListBoxItem Selected="ListBoxItemAttendance_Selected" Margin="0 2" Foreground="#9D9D9D">
+            <ListBoxItem Selected="ListBoxItemHomeworks_Selected" Margin="0 2">
+                <TextBlock Text="Домашние задания"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemAttendance_Selected" Margin="0 2">
                 <TextBlock Text="Посещаемость"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemHomeworks_Selected" Margin="0 2" Foreground="#9D9D9D">
-                <TextBlock Text="Домашние задания"/>
+            <ListBoxItem Selected="ListBoxItemMessages_Selected" Margin="0 2">
+                <TextBlock Text="Сообщения"/>
             </ListBoxItem>
         </ListBox>
         <Frame x:Name="PersonalFrame" Grid.Column="1"/>
