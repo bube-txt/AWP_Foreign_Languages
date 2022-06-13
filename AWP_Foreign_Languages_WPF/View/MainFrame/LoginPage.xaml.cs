@@ -43,11 +43,13 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame
                 {
                     NavigationService.Navigate(new StudentPage());
                     ShowPersonalPageButton();
+                    App.ActiveClient = db.context.Client.Where(x => x.User.IdUser == App.ActiveUser.IdUser).FirstOrDefault();
                 }
                 else if (user.Role.NameRole == RolesEnum.Teacher)
                 {
                     NavigationService.Navigate(new TeacherPage());
                     ShowPersonalPageButton();
+                    App.ActiveTeacher = db.context.Teacher.Where(x => x.User.IdUser == App.ActiveUser.IdUser).FirstOrDefault();
                 }
                 else if (user.Role.NameRole == RolesEnum.Administrator)
                 {

@@ -37,7 +37,7 @@ namespace AWP_Foreign_Languages_WPF
             App.LogoutBorder = LogoutBorder;
 
             // Тестовый режим
-            App.ActiveUser = db.context.User.Where(x => x.IdUser == 4).FirstOrDefault();
+            App.ActiveUser = db.context.User.Where(x => x.IdUser == 6).FirstOrDefault();
 
             if (App.ActiveUser.Role.NameRole == RolesEnum.Client)
             {
