@@ -32,7 +32,7 @@
             <ListBoxItem Selected="ListBoxItemTeacher_Selected" Margin="0 2">
                 <TextBlock Text="Преподаватели"/>
             </ListBoxItem>
-            <ListBoxItem Selected="ListBoxItemFormGroups_Selected" Margin="0 2">
+            <ListBoxItem Selected="ListBoxItemFormGroups_Selected" Margin="0 2" Foreground="#aaa">
                 <StackPanel>
                     <TextBlock Text="Формирование"/>
                     <TextBlock Text="Групп"/>
@@ -40,6 +40,12 @@
             </ListBoxItem>
             <ListBoxItem Selected="ListBoxItemCallbacks_Selected" Margin="0 2">
                 <TextBlock Text="Отзывы"/>
+            </ListBoxItem>
+            <ListBoxItem Selected="ListBoxItemBanned_Selected" Margin="0 2">
+                <StackPanel>
+                    <TextBlock Text="Заблокирован-"/>
+                    <TextBlock Text="ные"/>
+                </StackPanel>
             </ListBoxItem>
         </ListBox>
         <Frame x:Name="PersonalFrame" Grid.Column="1"/>

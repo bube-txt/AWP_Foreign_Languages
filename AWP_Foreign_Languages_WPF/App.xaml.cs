@@ -36,5 +36,6 @@ namespace AWP_Foreign_Languages_WPF
         public static Client SelectedClient = null;
         public static Service SelectedService = null;
         public static Attendance SelectedAttendance = null;
+        public static Teacher SelectedTeacher = null;
     }
 }

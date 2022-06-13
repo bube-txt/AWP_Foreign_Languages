@@ -6,117 +6,117 @@
       xmlns:local="clr-namespace:AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="687"
-      Title="StudentsPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="DataGridSchedule" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGridSchedule_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="1*" Binding="{Binding FullName}"/>
-                <DataGridTextColumn Header="Группа" Width="1*" Binding="{Binding GetGroupName}"/>
-                <DataGridTextColumn Header="Почта" Width="1*" Binding="{Binding Path=User.EmailUser}"/>
-                <DataGridTextColumn Header="Телефон" Width="0.5*" Binding="{Binding Path=User.PhoneUser}"/>
-                <DataGridTextColumn Header="Дата рождения" Width="0.5*" Binding="{Binding FormatedDOB}"/>
-                <DataGridTextColumn Header="Пол" Width="0.5*" Binding="{Binding GenderUser}"/>
-            </DataGrid.Columns>
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click" />
-                    <Separator/>
-                    <MenuItem Header="Заблокировать">
-                        <MenuItem Header="Подтвердить" x:Name="ButtonRemove" Click="ButtonRemove_Click"/>
-                    </MenuItem>
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
-        <StackPanel Grid.Row="1">
-            <TabControl TabStripPlacement="Top" Height="200">
-                <TabItem Header="Просмотр">
-                    <StackPanel Margin="5">
-                        <StackPanel Orientation="Horizontal" Height="140">
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="ФИО" TextAlignment="Center"/>
-                                <TextBox x:Name="TextBoxFullNameSearch" Width="100" TextChanged="TextBoxTextBoxFullNameSearch_TextChanged"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Email" TextAlignment="Center"/>
-                                <TextBox x:Name="TextBoxEmailSearch" Width="100" TextChanged="TextBoxTextBoxEmailSearch_TextChanged"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Телефон" TextAlignment="Center"/>
-                                <TextBox x:Name="TextBoxPhoneSearch" Width="100" TextChanged="TextBoxTextBoxPhoneSearch_TextChanged"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Дата рождения" TextAlignment="Center"/>
-                                <DatePicker x:Name="DatePickerDOBSearch" SelectedDateChanged="DatePickerDOBSearch_SelectedDateChanged"/>
-                            </StackPanel>
-                            <StackPanel Width="auto" Margin="5">
-                                <TextBlock Text="Пол" Width="100" TextAlignment="Center"/>
-                                <ComboBox x:Name="ComboBoxGender" SelectionChanged="ComboBoxGender_SelectionChanged">
-                                    <ComboBoxItem>Мужской</ComboBoxItem>
-                                    <ComboBoxItem>Женский</ComboBoxItem>
-                                </ComboBox>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                            <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
-                                <Button Click="ButtonClear_Click" Content="Очистить"/>
-                            </Border>
-                        </StackPanel>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Редактирование">
-                    <StackPanel Margin="5">
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
+          Title="StudentsPage">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="DataGridSchedule" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGridSchedule_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ФИО" Width="1*" Binding="{Binding FullName}"/>
+                    <DataGridTextColumn Header="Группа" Width="1*" Binding="{Binding GetGroupName}"/>
+                    <DataGridTextColumn Header="Почта" Width="1*" Binding="{Binding Path=User.EmailUser}"/>
+                    <DataGridTextColumn Header="Телефон" Width="0.5*" Binding="{Binding Path=User.PhoneUser}"/>
+                    <DataGridTextColumn Header="Дата рождения" Width="0.5*" Binding="{Binding FormatedDOB}"/>
+                    <DataGridTextColumn Header="Пол" Width="0.5*" Binding="{Binding GenderUser}"/>
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click" />
+                        <Separator/>
+                        <MenuItem Header="Заблокировать">
+                            <MenuItem Header="Подтвердить" x:Name="ButtonRemove" Click="ButtonRemove_Click"/>
+                        </MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+            <StackPanel Grid.Row="1">
+                <TabControl TabStripPlacement="Top" Height="200">
+                    <TabItem Header="Просмотр">
+                        <StackPanel Margin="5">
+                            <StackPanel Orientation="Horizontal" Height="140">
                                 <StackPanel Width="auto" Margin="5">
                                     <TextBlock Text="ФИО" TextAlignment="Center"/>
-                                    <TextBox x:Name="TextBoxFullNameEdit" Width="100"/>
+                                    <TextBox x:Name="TextBoxFullNameSearch" Width="100" TextChanged="TextBoxTextBoxFullNameSearch_TextChanged"/>
                                 </StackPanel>
                                 <StackPanel Width="auto" Margin="5">
                                     <TextBlock Text="Email" TextAlignment="Center"/>
-                                    <TextBox x:Name="TextBoxEmailEdit" Width="100"/>
+                                    <TextBox x:Name="TextBoxEmailSearch" Width="100" TextChanged="TextBoxTextBoxEmailSearch_TextChanged"/>
                                 </StackPanel>
                                 <StackPanel Width="auto" Margin="5">
                                     <TextBlock Text="Телефон" TextAlignment="Center"/>
-                                    <TextBox x:Name="TextBoxPhoneEdit" Width="100"/>
+                                    <TextBox x:Name="TextBoxPhoneSearch" Width="100" TextChanged="TextBoxTextBoxPhoneSearch_TextChanged"/>
                                 </StackPanel>
                                 <StackPanel Width="auto" Margin="5">
                                     <TextBlock Text="Дата рождения" TextAlignment="Center"/>
-                                    <DatePicker x:Name="DatePickerDOBEdit"/>
+                                    <DatePicker x:Name="DatePickerDOBSearch" SelectedDateChanged="DatePickerDOBSearch_SelectedDateChanged"/>
                                 </StackPanel>
                                 <StackPanel Width="auto" Margin="5">
                                     <TextBlock Text="Пол" Width="100" TextAlignment="Center"/>
-                                    <ComboBox x:Name="ComboBoxEditGender">
+                                    <ComboBox x:Name="ComboBoxGender" SelectionChanged="ComboBoxGender_SelectionChanged">
                                         <ComboBoxItem>Мужской</ComboBoxItem>
                                         <ComboBoxItem>Женский</ComboBoxItem>
                                     </ComboBox>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Height="91">
-                                <StackPanel Width="auto" Margin="5">
-                                    <TextBlock Text="Пароль" TextAlignment="Center"/>
-                                    <TextBox x:Name="TextBoxPasswordEdit" Width="100"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-                        <DockPanel>
                             <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                                 <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
-                                    <Button Click="ButtonClearEdit_Click" Content="Очистить"/>
+                                    <Button Click="ButtonClear_Click" Content="Очистить"/>
                                 </Border>
                             </StackPanel>
-                            <StackPanel Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                                <Border BorderThickness="1" BorderBrush="#21B1C9" Background="#2BB1C9" CornerRadius="6">
-                                    <Button x:Name="ButtonEditConfirm" Click="ButtonEditConfirm_Click" Content="Редактировать"/>
-                                </Border>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Редактирование">
+                        <StackPanel Margin="5">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Width="auto" Margin="5">
+                                        <TextBlock Text="ФИО" TextAlignment="Center"/>
+                                        <TextBox x:Name="TextBoxFullNameEdit" Width="100"/>
+                                    </StackPanel>
+                                    <StackPanel Width="auto" Margin="5">
+                                        <TextBlock Text="Email" TextAlignment="Center"/>
+                                        <TextBox x:Name="TextBoxEmailEdit" Width="100"/>
+                                    </StackPanel>
+                                    <StackPanel Width="auto" Margin="5">
+                                        <TextBlock Text="Телефон" TextAlignment="Center"/>
+                                        <TextBox x:Name="TextBoxPhoneEdit" Width="100"/>
+                                    </StackPanel>
+                                    <StackPanel Width="auto" Margin="5">
+                                        <TextBlock Text="Дата рождения" TextAlignment="Center"/>
+                                        <DatePicker x:Name="DatePickerDOBEdit"/>
+                                    </StackPanel>
+                                    <StackPanel Width="auto" Margin="5">
+                                        <TextBlock Text="Пол" Width="100" TextAlignment="Center"/>
+                                        <ComboBox x:Name="ComboBoxEditGender">
+                                            <ComboBoxItem>Мужской</ComboBoxItem>
+                                            <ComboBoxItem>Женский</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="91">
+                                    <StackPanel Width="auto" Margin="5">
+                                        <TextBlock Text="Пароль" TextAlignment="Center"/>
+                                        <TextBox x:Name="TextBoxPasswordEdit" Width="100"/>
+                                    </StackPanel>
+                                </StackPanel>
                             </StackPanel>
-                        </DockPanel>
-                    </StackPanel>
-                </TabItem>
-            </TabControl>
-        </StackPanel>
-    </Grid>
+                            <DockPanel>
+                                <StackPanel Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                    <Border BorderThickness="1" BorderBrush="#5991FE" Background="#5991FF" CornerRadius="6">
+                                        <Button Click="ButtonClearEdit_Click" Content="Очистить"/>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                    <Border BorderThickness="1" BorderBrush="#21B1C9" Background="#2BB1C9" CornerRadius="6">
+                                        <Button x:Name="ButtonEditConfirm" Click="ButtonEditConfirm_Click" Content="Редактировать"/>
+                                    </Border>
+                                </StackPanel>
+                            </DockPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </Grid>
 </Page>

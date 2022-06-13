@@ -48,17 +48,22 @@ namespace AWP_Foreign_Languages_WPF.View.MainFrame.Administrator
 
         private void ListBoxItemTeacher_Selected(object sender, RoutedEventArgs e)
         {
-
+            PersonalFrame.Content = new TeachersListPage();
         }
 
         private void ListBoxItemFormGroups_Selected(object sender, RoutedEventArgs e)
         {
-
+            PersonalFrame.Content = new WIPPage();
         }
 
         private void ListBoxItemCallbacks_Selected(object sender, RoutedEventArgs e)
         {
             PersonalFrame.Content = new CallbacksPage();
+        }
+
+        private void ListBoxItemBanned_Selected(object sender, RoutedEventArgs e)
+        {
+            PersonalFrame.Content = new BannedListPage();
         }
     }
 }

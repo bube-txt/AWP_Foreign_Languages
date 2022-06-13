@@ -1,0 +1,29 @@
+﻿<Page x:Class="AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame.BannedListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWP_Foreign_Languages_WPF.View.MainFrame.Administrator.Frame"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="687"
+      Title="BannedListPage">
+
+    <Grid>
+        <DataGrid x:Name="DataGridSchedule" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGridSchedule_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Width="1*" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Почта" Width="1*" Binding="{Binding EmailUser}"/>
+                <DataGridTextColumn Header="Телефон" Width="0.6*" Binding="{Binding PhoneUser}"/>
+                <DataGridTextColumn Header="Дата рождения" Width="0.8*" Binding="{Binding FormatedDOB}"/>
+                <DataGridTextColumn Header="Пол" Width="0.5*" Binding="{Binding GenderUser}"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Разблокировать">
+                        <MenuItem Header="Подтвердить" x:Name="ButtonRemove" Click="ButtonRemove_Click"/>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</Page>

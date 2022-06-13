@@ -146,6 +146,9 @@
     <Compile Include="View\MainFrame\Administrator\Frame\AttendancePage.xaml.cs">
       <DependentUpon>AttendancePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\BannedListPage.xaml.cs">
+      <DependentUpon>BannedListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\CallbacksPage.xaml.cs">
       <DependentUpon>CallbacksPage.xaml</DependentUpon>
     </Compile>
@@ -161,8 +164,14 @@
     <Compile Include="View\MainFrame\Administrator\Frame\StudentsPage.xaml.cs">
       <DependentUpon>StudentsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\TeachersListPage.xaml.cs">
+      <DependentUpon>TeachersListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\Administrator\Frame\TeachersPage.xaml.cs">
       <DependentUpon>TeachersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\Administrator\Frame\WIPPage.xaml.cs">
+      <DependentUpon>WIPPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\BannedPage.xaml.cs">
       <DependentUpon>BannedPage.xaml</DependentUpon>
@@ -243,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\BannedListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainFrame\Administrator\Frame\CallbacksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -263,7 +276,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\TeachersListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainFrame\Administrator\Frame\TeachersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainFrame\Administrator\Frame\WIPPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
