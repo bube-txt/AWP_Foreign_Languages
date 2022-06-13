@@ -52,7 +52,6 @@
     <Compile Include="CheckClassUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConvertClassUnitTest.cs" />
-    <Compile Include="UserViewModelUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
